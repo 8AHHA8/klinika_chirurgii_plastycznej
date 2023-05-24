@@ -6,6 +6,18 @@
     <title>Przychodnia Chirurgii Plastycznej</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const images = document.querySelectorAll('.wymiar');
+            
+            images.forEach((image) => {
+                image.addEventListener('mouseover', () => {
+                    const audio = new Audio('click.mp3'); // ścieżka do pliku dźwiękowego klikania
+                    audio.play();
+                });
+            });
+        });
+    </script>
     <style>
         /* Resetowanie stylów */
         * {
@@ -50,11 +62,18 @@
         }
 
         p:hover {
-            font-size: 16.2px;
             color: #666666;
             margin-bottom: 20px;
-            letter-spacing: 0.5px;
             transition: 700ms ease;
+        }
+
+        .odstep:hover{
+            letter-spacing: 0.5px;
+            font-size: 14px;
+        }
+
+        .wielkosc{
+            font-size: 12px;
         }
 
         /* Menu nawigacyjne */
@@ -85,10 +104,10 @@
         }
 
         nav ul li a:hover {
-            font-size:calc(20.2px);
+            font-size:calc(20.3px);
             text-transform: uppercase;
             font-family: 'Gambetta', serif;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
             transition: 700ms ease;
             font-variation-settings: "wght" 311;
             margin-bottom: 0.8rem;
@@ -117,67 +136,32 @@
         }
 
 
-        /* zdjęcia */
+        /* Zdjęcia */
         .wymiar {
-            width: 400px;
-            height: 600px;
+            width: 20rem;
             object-fit: cover;
             border-radius: 25px;
-        }
-
-        .wymiar:hover {  
+            margin: 10px;
             transition: 700ms ease;
-            width: 550px;  
-            height: 550px;  
+        }
+
+        .wymiar:hover {
+            width: 22rem;
             border-radius: 25px;
-        } 
-
-        .thumbnail::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.75);
-            opacity: 0;
-            transition: opacity 0.3s;
-            border-radius: 25px;
-            }
-
-        .thumbnail:hover::after {
-            opacity: 1;
         }
 
-        /* .thumbnail:hover::after {
-            /* content: attr(data-caption); */
-            /* content: attr(data-foo); */
-            /* color: #fff; Biały kolor tekstu */
-            /* font-size: 16px; Rozmiar czcionki */
-            /* Dodatkowe style dla tekstu */
-        /* }  */
-
-        .caption {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: #fff;
-            font-size: 18px;
-            font-weight: bold;
-            opacity: 0;
-            transition: opacity 0.3s;
+        .wymiar-text {
+            font-size: 1rem;
+            transition: font-size 700ms ease;
+            overflow-wrap: break-word; /* lub word-wrap: break-word; */
+            max-width: 600px;
+            padding-left: 30px; /* Adjust the value as per your preference */
         }
 
-        .caption p{
-            color: red;
-            Z-index: 10;
-        }
-
-        .thumbnail:hover .caption {
-            opacity: 1;
-            color: #fff; /* Dodatkowo ustawiamy biały kolor dla tekstu */
+        .thumbnail:hover .wymiar-text {
+            font-size: 1.1rem;
+            outline: none;
+            text-decoration: none;
         }
 
         /*czcionka*/
@@ -200,121 +184,178 @@
             font-size: 14px;
             color: #666666;
         }
+
+        .text-justify {
+            text-align: justify;
+            margin-right: 5rem; /* Możesz dostosować wartość odstępu według preferencji */
+            margin-top: 1.5rem;
+        }
+
+        .flex-container {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .text-container {
+            margin-left: 20px; /* Możesz dostosować margines według preferencji */
+        }
+
+        .wymiar-kadra {
+            width: 22rem;
+            object-fit: cover;
+            border-radius: 25px;
+            margin: 10px;
+            transition: 700ms ease;
+        }
+
+        .wymiar-kadra:hover {
+            width: 22.1rem;
+            object-fit: cover;
+            border-radius: 25px;
+            margin: 10px;
+            transition: 700ms ease;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Zakład Przychodni Chirurgii Plastycznej</h1>
-        <p>Dzięki nam możesz się zmienić</p>
+        <h1>PLASTIC SURGERY CLINIC FACILITY</h1>
+        <p class="odstep wielkosc">YOU CAN CHANGE YOURSELF WITH US</p>
     </header>
 
     <nav>
         <ul>
-            <li><a href="#">Rejestracja pacjentów</a></li>
-            <li><a href="#">Kadra</a></li>
-            <li><a href="#">Usługi</a></li>
-            <li><a href="#">Kontakt</a></li>
+            <li><a href="http://127.0.0.1:8000/registration">PATIENT REGISTRATION</a></li>
+            <li><a href="#">OUR TEAM</a></li>
+            <li><a href="#">SERVICES</a></li>
+            <li><a href="#">CONTACT</a></li>
         </ul>
     </nav>
 
     <section>
-        <h2>O nas</h2>
-        <t>Jesteśmy doświadczonym zespołem chirurgów plastycznych i możemy zapewnić Ci kompleksową gamę usług z zakresu chirurgii plastycznej. 
-            Nasza przychodnia jest wyposażona w najnowocześniejszy sprzęt medyczny, 
-            a nasi specjaliści posiadają bogate doświadczenie i wysoką wiedzę w swojej dziedzinie.</t>
+    <h2>ABOUT US</h2>
+    <div class="flex-container">
+      <img src="{{asset('photos/kadra.jpg')}}" alt="Lights" class="wymiar-kadra">
+      <div class="text-container">
+    <p class="text-justify">We are a team of experienced plastic surgeons ready to provide you with a comprehensive range of plastic surgery services. 
+        Our plastic surgery clinic is equipped with state-of-the-art medical equipment, and our specialists have extensive experience and deep knowledge in their field. 
+        We understand the importance of your trust and sense of security during plastic surgery procedures. Therefore, we prioritize an individual approach to each patient, 
+        carefully listening to your needs and expectations. Our priority is to ensure the highest quality of medical care and achieve the best possible results. 
+        Our specialists not only have a solid medical education but also continuously enhance their qualifications by participating in trainings and conferences
+         on the latest advancements in plastic surgery. This enables us to offer you the latest techniques and methods tailored to your individual needs. 
+         We constantly strive to improve our skills and raise the standards of our clinic. We create a place where patients feel comfortable and confident, 
+         knowing they are in the hands of experienced professionals. We take care to make the entire process, from the first consultation to recovery, 
+         as comfortable and safe as possible for you. If you are looking for a trusted plastic surgery clinic where your needs are a priority, 
+         we invite you to visit us. Give us the opportunity to help you achieve your goals and feel more confident in your own skin.</p>
+  </div>
 </section>
 
 <section>
 
-
+<h2>OPINIONS</h2>
 <div class="row">
-<div class="col-md-4">
+  <div class="col-md-4">
     <div class="thumbnail">
-      <a href="/w3images/nature.jpg">
-        <img src="{{asset('photos/1.jpg')}}" alt="Nature" style="width:100%" class="wymiar">
+        <img src="{{asset('photos/1.jpg')}}" alt="Lights" class="wymiar">
         <div class="caption">
-          <p>Lorem ipsum...</p>
+          <p class="wymiar-text czcionka">
+            Name: Mateusz <br>
+            Gender: Male <br>
+            Weight: 65 kg <br>
+            Date of surgery: 02.12.2019 <br>
+            Surgery: Face Reconstruction <br>
+            Opinion: The plastic surgery clinic successfully transformed my face through reconstruction surgery, boosting my confidence and leaving me extremely satisfied with the results.
+          </p>
         </div>
-      </a>
     </div>
   </div>
   <div class="col-md-4">
     <div class="thumbnail">
-      <a href="/w3images/nature.jpg">
-        <img src="{{asset('photos/2.jpg')}}" alt="Nature" style="width:100%" class="wymiar">
+        <img src="{{asset('photos/2.jpg')}}" alt="Lights" class="wymiar">
         <div class="caption">
-          <p>Lorem ipsum...</p>
+        <p class="wymiar-text czcionka">
+            Name: Kacper <br>
+            Gender: Male <br>
+            Weight: 73 kg <br>
+            Date of surgery: 21.09.2021 <br>
+            Surgery: Suction <br>
+            Opinion: The plastic surgery clinic's suction surgery exceeded my expectations, delivering outstanding results and leaving me highly satisfied with the procedure.
+          </p>
         </div>
-      </a>
     </div>
   </div>
   <div class="col-md-4">
     <div class="thumbnail">
-      <a href="/w3images/fjords.jpg">
-        <img src="{{asset('photos/3.jpg')}}" alt="Fjords" style="width:100%" class="wymiar">
+        <img src="{{asset('photos/3.jpg')}}" alt="Lights" class="wymiar">
         <div class="caption">
-          <p>Lorem ipsum...</p>
+        <p class="wymiar-text czcionka">
+            Name: Oliwia <br>
+            Gender: Female <br>
+            Weight: 57 kg <br>
+            Date of surgery: 15.03.2020 <br>
+            Surgery: Rhinoplasty <br>
+            Opinion: The plastic surgery clinic's Rhinoplasty surgery exceeded my expectations, delivering remarkable results and enhancing my overall facial harmony and confidence.
+          </p>
         </div>
-      </a>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <div class="thumbnail">
+        <img src="{{asset('photos/4.jpg')}}" alt="Lights" class="wymiar">
+        <div class="caption">
+        <p class="wymiar-text czcionka">
+            Name: Monika <br>
+            Gender: Female <br>
+            Weight: 63 kg <br>
+            Date of surgery: 12.12.2019 <br>
+            Surgery: Skin transplant <br>
+            Opinion: This clinic's skin transplant after the fire incident in my house has been a life-changing procedure, restoring my appearance and giving me a new lease on life.
+          </p>
+        </div>
     </div>
   </div>
   <div class="col-md-4">
     <div class="thumbnail">
-      <a href="/w3images/nature.jpg">
-        <img src="{{asset('photos/4.jpg')}}" alt="Nature" style="width:100%" class="wymiar">
+        <img src="{{asset('photos/5.jpg')}}" alt="Lights" class="wymiar">
         <div class="caption">
-          <p>Lorem ipsum...</p>
+        <p class="wymiar-text czcionka">
+            Name: Mike <br>
+            Gender: Male <br>
+            Weight: 67 kg <br>
+            Date of surgery: 27.08.2022 <br>
+            Surgery: Hair Transplant <br>
+            Opinion: The plastic surgery clinic's hair transplant surgery has significantly enhanced my confidence by restoring a natural and fuller head of hair.
+          </p>
         </div>
-      </a>
     </div>
   </div>
   <div class="col-md-4">
     <div class="thumbnail">
-      <a href="/w3images/nature.jpg">
-        <img src="{{asset('photos/5.jpg')}}" alt="Nature" style="width:100%" class="wymiar">
+        <img src="{{asset('photos/6.jpg')}}" alt="Lights" class="wymiar">
         <div class="caption">
-          <p>Lorem ipsum...</p>
+        <p class="wymiar-text czcionka">
+            Name: Barbara <br>
+            Gender: Female <br>
+            Weight: 63 kg <br>
+            Date of surgery: 02.06.2022 <br>
+            Surgery: Laser resurfacing <br>
+            Opinion: The plastic surgery clinic's laser resurfacing surgery has remarkably rejuvenated my skin, leaving it smoother and more youthful.
+          </p>
         </div>
-      </a>
     </div>
   </div>
-  <div class="col-md-4">
-    <div class="thumbnail">
-      <a href="/w3images/nature.jpg">
-        <img src="{{asset('photos/6.jpg')}}" alt="Nature" style="width:100%" class="wymiar">
-        <div class="caption">
-          <p>Lorem ipsum...</p>
-        </div>
-      </a>
-    </div>
-  </div>
+</div>
   
   
 </div>
     
 </section>
 
-
-
 <footer>
-    <p>&copy; 2023 Zakład Przychodni Chirurgii Plastycznej. Wszelkie prawa zastrzeżone.</p>
+    <p>&copy; 2023 Plastic Surgery Clinic Facility. All rights reserved.</p>
 </footer>
-
-<!-- <script>
-function addClassOrDelete(opinia, klasa) {
-  const element = document.querySelectorAll(opinia);
-  
-  element.addEventListener('mouseenter', function() {
-    element.classList.add(klasa);
-  });
-  
-  element.addEventListener('mouseleave', function() {
-    element.classList.remove(klasa);
-  });
-}
-
-addClassOrDelete('.myElement', '.highlight');
-</script> -->
 
 </body>
 </html>
