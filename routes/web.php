@@ -20,3 +20,15 @@ Route::get('/', function () {
 Route::get('/registration', function () {
     return view('registration');
 });
+
+Route::get('/team', function () {
+    return view('team');
+});
+
+Route::get('/services', function () {
+    return view('services');
+});
+
+Route::get('/contact', function () {
+    return view('contact');
+});

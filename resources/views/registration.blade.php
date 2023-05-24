@@ -73,10 +73,13 @@
             position: absolute;
             top: 10px;
             left: 10px;
+            width: 80px;
         }
+
         .wymiar{
             width: 80px;
         }
+
         .wymiar:hover{
             transition: font-size 700ms ease;
             width: 90px;
@@ -93,8 +96,8 @@
         }
 
         .moveup {
-        transform: translateY(-13rem);
-    }
+            transform: translateY(-13rem);
+        }
     </style>
 </head>
 <body>

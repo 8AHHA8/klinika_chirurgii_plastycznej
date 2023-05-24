@@ -226,9 +226,9 @@
     <nav>
         <ul>
             <li><a href="http://127.0.0.1:8000/registration">PATIENT REGISTRATION</a></li>
-            <li><a href="#">OUR TEAM</a></li>
-            <li><a href="#">SERVICES</a></li>
-            <li><a href="#">CONTACT</a></li>
+            <li><a href="http://127.0.0.1:8000/team">OUR TEAM</a></li>
+            <li><a href="http://127.0.0.1:8000/services">SERVICES</a></li>
+            <li><a href="http://127.0.0.1:8000/contact">CONTACT</a></li>
         </ul>
     </nav>
 
