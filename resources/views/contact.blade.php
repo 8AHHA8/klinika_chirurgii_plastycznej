@@ -106,6 +106,9 @@
             background-size: cover;
             background-position: center;
         }
+        .typczcionka{
+            font-family: Arial, Helvetica, sans-serif;
+        }
     </style>
 </head>
 <body>
@@ -113,26 +116,26 @@
 <a class="back-button" href="http://127.0.0.1:8000"><img src="{{asset('photos/powrot.png')}}" alt="Back to Homepage" class="wymiar"></a>
     <div class="container">
     <div class="contact-info">
-        <h2>Contact Us</h2>
-        <p>If you have any questions or inquiries, please feel free to reach out to us.</p>
-        <p>Our team is available to assist you:</p>
-        <p>Email: info@clinic.com</p>
-        <p>Phone: +1 45757844443</p>
-        <p>Address: Legnicka 50, Galaktyka</p>
+        <h2 class="typczcionka">Contact Us</h2>
+        <p class="typczcionka">If you have any questions or inquiries, please feel free to reach out to us.</p>
+        <p class="typczcionka">Our team is available to assist you:</p>
+        <p class="typczcionka">Email: info@clinic.com</p>
+        <p class="typczcionka">Phone: +1 45757844443</p>
+        <p class="typczcionka">Address: Legnicka 50, Galaktyka</p>
     </div>
 
     <div class="contact-form">
-        <h2>Send us a message</h2>
+        <h2 class="typczcionka">Send us a message</h2>
         <form action="#" method="post">
             <input type="text" name="name" placeholder="Your Name" required>
             <input type="email" name="email" placeholder="Your Email" required>
             <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-            <button type="submit">Send Message</button>
+            <button type="submit" class="typczcionka">Send Message</button>
         </form>
     </div>
 
     <div class="contact-social">
-        <p>Connect with us:</p>
+        <p class="typczcionka">Connect with us:</p>
         <a href="#" target="_blank"><i class=""><img src="{{asset('photos/facebook.png')}}" alt="Lights" class="media"></i></a>
         <a href="#" target="_blank"><i class=""><img src="{{asset('photos/instagram.jpg')}}" alt="Lights" class="media"></i></a>
         <a href="#" target="_blank"><i class=""><img src="{{asset('photos/twitter.png')}}" alt="Lights" class="media"></i></a>

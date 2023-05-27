@@ -15,7 +15,7 @@
 
         .container {
             width: 500px;
-            height: 600px;
+            height: 770px;
             margin: 50px auto;
             padding: 20px;
             background-color: #fff;
@@ -25,8 +25,8 @@
 
         .container:hover {
             transition: 700ms ease;
-            width: 550px;
-            height: 610px;
+            width: 510px;
+            height: 780px;
         }
 
         h1 {
@@ -96,7 +96,10 @@
         }
 
         .moveup {
-            transform: translateY(-13rem);
+            transform: translateY(-5rem);
+        }
+        .typczcionka{
+            font-family: Arial, Helvetica, sans-serif;
         }
     </style>
 </head>
@@ -104,22 +107,25 @@
     <div class="image-background">
     <a class="back-button" href="http://127.0.0.1:8000"><img src="{{asset('photos/powrot.png')}}" alt="Back to Homepage" class="wymiar"></a>
     <div class="container moveup">
-        <h1>Patient Registration</h1>
+        <h1 class="typczcionka">Patient Registration</h1>
         <form>
-            <label for="firstName">First Name:</label>
+            <label for="firstName" class="typczcionka">First Name:</label>
             <input type="text" id="firstName" name="firstName" required>
             
-            <label for="lastName">Last Name:</label>
+            <label for="lastName" class="typczcionka">Last Name:</label>
             <input type="text" id="lastName" name="lastName" required>
             
-            <label for="pesel">PESEL:</label>
+            <label for="pesel" class="typczcionka">PESEL:</label>
             <input type="text" id="pesel" name="pesel" required>
             
-            <label for="phoneNumber">Phone Number:</label>
+            <label for="phoneNumber" class="typczcionka">Phone Number:</label>
             <input type="text" id="phoneNumber" name="phoneNumber" required>
-            
-            <label for="registrationDate">Registration Date:</label>
-            <input type="date" id="registrationDate" name="registrationDate" required>
+
+            <label for="email" class="typczcionka">E-mail:</label>
+            <input type="text" id="email" name="email" required>
+
+            <label for="password" class="typczcionka">Password:</label>
+            <input type="text" id="password" name="password" required>
             
             <input type="submit" value="Register">
         </form>

@@ -39,12 +39,6 @@
             object-fit: cover;
         }
 
-        .doctor-image:hover {
-            transition: font-size 700ms ease;
-            width: 220px;
-            height: 220px;
-        }
-
         .doctor-info {
             flex: 1;
         }
@@ -109,6 +103,9 @@
             transition: font-size 700ms ease;
             width: 90px;
         }
+        .typczcionka{
+            font-family: Arial, Helvetica, sans-serif;
+        }
     </style>
 </head>
 <body>
@@ -120,9 +117,9 @@
         <div class="doctor">
             <img src="{{asset('photos/klaus.jpg')}}" class="doctor-image">
             <div class="doctor-info">
-                <h2 class="doctor-name">Dr. Klaus Lindecker</h2>
-                <p class="doctor-specialty">Cosmetic Surgeon</p>
-                <p class="doctor-description">Dr. Klaus Lindecker is a renowned cosmetic surgeon known for his exceptional skills in body contouring and aesthetic procedures. 
+                <h2 class="doctor-name typczcionka">Dr. Klaus Lindecker</h2>
+                <p class="doctor-specialty typczcionka">Cosmetic Surgeon</p>
+                <p class="doctor-description typczcionka">Dr. Klaus Lindecker is a renowned cosmetic surgeon known for his exceptional skills in body contouring and aesthetic procedures. 
                     He specializes in helping patients enhance their physical appearance and achieve their desired results through personalized care and innovative techniques.</p>
             </div>
         </div>
@@ -130,9 +127,9 @@
         <div class="doctor">
             <img src="{{asset('photos/zofia.jpg')}}" class="doctor-image">
             <div class="doctor-info">
-                <h2 class="doctor-name">Dr. Zofia Ratajkowska</h2>
-                <p class="doctor-specialty">Plastic Surgeon</p>
-                <p class="doctor-description">Dr. Zofia Ratajkowska is a highly skilled plastic surgeon with several years of experience. 
+                <h2 class="doctor-name typczcionka">Dr. Zofia Ratajkowska</h2>
+                <p class="doctor-specialty typczcionka">Plastic Surgeon</p>
+                <p class="doctor-description typczcionka">Dr. Zofia Ratajkowska is a highly skilled plastic surgeon with several years of experience. 
                     She specializes in facial reconstruction and has a passion for helping her patients enhance their natural beauty.</p>
             </div>
         </div>
@@ -140,9 +137,9 @@
         <div class="doctor">
             <img src="{{asset('photos/zbigniew.jpg')}}" class="doctor-image">
             <div class="doctor-info">
-                <h2 class="doctor-name">Dr. Zbidniew Dąbrowski</h2>
-                <p class="doctor-specialty">Facial Plastic Surgeon</p>
-                <p class="doctor-description">Dr. Zbigniew Dąbrowski is a skilled facial plastic surgeon with expertise in rhinoplasty and facelift procedures. 
+                <h2 class="doctor-name typczcionka">Dr. Zbidniew Dąbrowski</h2>
+                <p class="doctor-specialty typczcionka">Facial Plastic Surgeon</p>
+                <p class="doctor-description typczcionka">Dr. Zbigniew Dąbrowski is a skilled facial plastic surgeon with expertise in rhinoplasty and facelift procedures. 
                     He is committed to providing personalized care and helping his patients achieve their aesthetic goals.</p>
             </div>
         </div>
@@ -150,9 +147,9 @@
         <div class="doctor">
             <img src="{{asset('photos/anna.jpg')}}" class="doctor-image">
             <div class="doctor-info">
-                <h2 class="doctor-name">Dr. Anna Lazarowicz</h2>
-                <p class="doctor-specialty">Plastic Surgeon</p>
-                <p class="doctor-description">Dr. Anna Lazarowicz is a board-certified plastic surgeon specializing in reconstructive and aesthetic procedures. 
+                <h2 class="doctor-name typczcionka">Dr. Anna Lazarowicz</h2>
+                <p class="doctor-specialty typczcionka">Plastic Surgeon</p>
+                <p class="doctor-description typczcionka">Dr. Anna Lazarowicz is a board-certified plastic surgeon specializing in reconstructive and aesthetic procedures. 
                     She has a gentle and caring approach towards her patients and is dedicated to achieving natural-looking results.</p>
             </div>
         </div>

@@ -20,224 +20,255 @@
     </script>
     <style>
         /* Resetowanie stylów */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        body {
-            font-family: 'Open Sans', sans-serif;
-        }
+body {
+    font-family: 'Open Sans', sans-serif;
+}
 
-        /* Dodatkowe style strony */
+/* Dodatkowe style strony */
 
-        /* Nagłówek */
-        header {
-            background-color: #f2f2f2;
-            padding: 20px;
-            text-align: center;
-        }
+/* Nagłówek */
+header {
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+}
 
-        h1 {
-            font-size: 24px;
-            font-weight: 600;
-            color: #333333;
-            margin-bottom: 10px;
-        }
+h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 10px;
+}
 
-        h1:hover {
-            font-size: 24.2px;
-            font-weight: 600;
-            color: #333333;
-            margin-bottom: 10px;
-            letter-spacing: 0.5px;
-            transition: 700ms ease;
-        }
+h1:hover {
+    font-size: 24.2px;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+    transition: 700ms ease;
+}
 
-        p {
-            font-size: 16px;
-            color: #666666;
-            margin-bottom: 20px;
-        }
+p {
+    font-size: 16px;
+    color: #666666;
+    margin-bottom: 20px;
+}
 
-        p:hover {
-            color: #666666;
-            margin-bottom: 20px;
-            transition: 700ms ease;
-        }
+p:hover {
+    color: #666666;
+    margin-bottom: 20px;
+    transition: 700ms ease;
+}
 
-        .odstep:hover{
-            letter-spacing: 0.5px;
-            font-size: 14px;
-        }
+.odstep:hover{
+    letter-spacing: 0.5px;
+    font-size: 14px;
+}
 
-        .wielkosc{
-            font-size: 12px;
-        }
+.wielkosc{
+    font-size: 12px;
+}
 
-        /* Menu nawigacyjne */
-        nav {
-            background-color: #333333;
-            padding: 20px 20px;
-        }
+/* Menu nawigacyjne */
+nav {
+    background-color: #333333;
+    padding: 20px 20px;
+}
 
-        nav ul {
-            list-style: none;
-            text-align: center;
-            display: flex;
-            justify-content: space-between;
-        }
+nav ul {
+    list-style: none;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
 
-        nav ul li {
-            display: inline-block;
-            margin-right: 20px;
-            margin-left: 20px;
-        }
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+    margin-left: 20px;
+}
 
-        nav ul li a {
-            color: #ffffff;
-            font-size: 20px;
-            font-weight: 400;
-            font-family: 'Gambetta', serif;
-            transition: 200MS;
-        }
+nav ul li a {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: 'Gambetta', serif;
+    transition: 200MS;
+}
 
-        nav ul li a:hover {
-            font-size:calc(20.3px);
-            text-transform: uppercase;
-            font-family: 'Gambetta', serif;
-            letter-spacing: 0.8px;
-            transition: 700ms ease;
-            font-variation-settings: "wght" 311;
-            margin-bottom: 0.8rem;
-            color: PaleGoldenRod;
-            outline: none;
-            text-decoration: none;
-            text-align: center;
-        }
+nav ul li a:hover {
+    font-size:calc(20.3px);
+    text-transform: uppercase;
+    font-family:  Arial, Helvetica, sans-serif;
+    letter-spacing: 0.8px;
+    transition: 700ms ease;
+    font-variation-settings: "wght" 311;
+    margin-bottom: 0.8rem;
+    color: PaleGoldenRod;
+    outline: none;
+    text-decoration: none;
+    text-align: center;
+}
 
-        /* Sekcje strony */
-        section {
-            padding: 40px 20px;
-        }
+/* Sekcje strony */
+section {
+    padding: 40px 20px;
+}
 
-        section h2 {
-            font-size: 20px;
-            font-weight: 600;
-            color: #333333;
-            margin-bottom: 20px;
-        }
+section h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 20px;
+}
 
-        section p {
-            font-size: 16px;
-            color: #666666;
-            margin-bottom: 20px;
-        }
+section p {
+    font-size: 16px;
+    color: #666666;
+    margin-bottom: 20px;
+}
 
 
-        /* Zdjęcia */
-        .wymiar {
-            width: 20rem;
-            object-fit: cover;
-            border-radius: 25px;
-            margin: 10px;
-            transition: 700ms ease;
-        }
+/* Zdjęcia */
+.wymiar {
+    width: 20rem;
+    object-fit: cover;
+    border-radius: 25px;
+    margin: 10px;
+    transition: 700ms ease;
+}
 
-        .wymiar:hover {
-            width: 22rem;
-            border-radius: 25px;
-        }
+/* .wymiar:hover {
+    width: 22rem;
+    border-radius: 25px;
+} */
 
-        .wymiar-text {
-            font-size: 1rem;
-            transition: font-size 700ms ease;
-            overflow-wrap: break-word; /* lub word-wrap: break-word; */
-            max-width: 600px;
-            padding-left: 30px; /* Adjust the value as per your preference */
-        }
+.wymiar-text {
+    font-size: 1rem;
+    transition: font-size 700ms ease;
+    overflow-wrap: break-word; /* lub word-wrap: break-word; */
+    max-width: 600px;
+    padding-left: 30px; /* Adjust the value as per your preference */
+    text-align: justify;
+}
 
-        .thumbnail:hover .wymiar-text {
-            font-size: 1.1rem;
-            outline: none;
-            text-decoration: none;
-        }
+.thumbnail:hover .wymiar-text {
+    outline: none;
+    text-decoration: none;
+}
 
-        /*czcionka*/
-        .czcionka{
-            color:black;
-        }
+/*czcionka*/
+.czcionka{
+    color:black;
+}
 
-        .czcionka-biala{
-            color:white;
-        }
+.czcionka-biala{
+    color:white;
+}
 
-        /* Stopka */
-        footer {
-            background-color: #f2f2f2;
-            padding: 20px;
-            text-align: center;
-        }
+/* Stopka */
+footer {
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+}
 
-        footer p {
-            font-size: 14px;
-            color: #666666;
-        }
+footer p {
+    font-size: 14px;
+    color: #666666;
+}
 
-        .text-justify {
-            text-align: justify;
-            margin-right: 5rem; /* Możesz dostosować wartość odstępu według preferencji */
-            margin-top: 1.5rem;
-        }
+.text-justify {
+    text-align: justify;
+    margin-right: 5rem; /* Możesz dostosować wartość odstępu według preferencji */
+    margin-top: 1.5rem;
+}
 
-        .flex-container {
-            display: flex;
-            align-items: flex-start;
-        }
+.flex-container {
+    display: flex;
+    align-items: flex-start;
+}
 
-        .text-container {
-            margin-left: 20px; /* Możesz dostosować margines według preferencji */
-        }
+.text-container {
+    margin-left: 20px; /* Możesz dostosować margines według preferencji */
+}
 
-        .wymiar-kadra {
-            width: 22rem;
-            object-fit: cover;
-            border-radius: 25px;
-            margin: 10px;
-            transition: 700ms ease;
-        }
+.wymiar-kadra {
+    width: 22rem;
+    object-fit: cover;
+    border-radius: 25px;
+    margin: 10px;
+    transition: 700ms ease;
+}
 
-        .wymiar-kadra:hover {
-            width: 22.1rem;
-            object-fit: cover;
-            border-radius: 25px;
-            margin: 10px;
-            transition: 700ms ease;
-        }
+.wymiar-kadra:hover {
+    width: 22.1rem;
+    object-fit: cover;
+    border-radius: 25px;
+    margin: 10px;
+    transition: 700ms ease;
+}
+/* Dodatkowe style dla opcji logowania */
+.login-option {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 16px;
+}
+
+.login-option:hover {
+    transition: 700ms ease;
+    font-size: 18px;
+}
+
+.login-option a {
+    color: #333333;
+    text-decoration: none;
+}
+
+.typczcionka{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Dodatkowe style dla linii granicznej */
+.opinia {
+    border-bottom: 1px solid #333333;
+    padding-bottom: 20px;
+}
     </style>
 </head>
 <body>
     <header>
-        <h1>PLASTIC SURGERY CLINIC FACILITY</h1>
-        <p class="odstep wielkosc">YOU CAN CHANGE YOURSELF WITH US</p>
+        <h1 class="typczcionka">PLASTIC SURGERY CLINIC FACILITY</h1>
+        <p class="odstep wielkosc typczcionka">YOU CAN CHANGE YOURSELF WITH US</p>
+        <div class="login-option">
+            <a href="http://127.0.0.1:8000/login" class=" typczcionka">Login</a>
+        </div>
     </header>
 
     <nav>
         <ul>
-            <li><a href="http://127.0.0.1:8000/registration">PATIENT REGISTRATION</a></li>
-            <li><a href="http://127.0.0.1:8000/team">OUR TEAM</a></li>
-            <li><a href="http://127.0.0.1:8000/services">SERVICES</a></li>
-            <li><a href="http://127.0.0.1:8000/contact">CONTACT</a></li>
+            <li><a href="http://127.0.0.1:8000/registration" class="typczcionka">PATIENT REGISTRATION</a></li>
+            <li><a href="http://127.0.0.1:8000/team" class="typczcionka">OUR TEAM</a></li>
+            <li><a href="http://127.0.0.1:8000/services" class="typczcionka" >SERVICES</a></li>
+            <li><a href="http://127.0.0.1:8000/booking"class="typczcionka">BOOKING</a></li>
+            <li><a href="http://127.0.0.1:8000/contact" class="typczcionka">CONTACT</a></li>
         </ul>
     </nav>
 
     <section>
-    <h2>ABOUT US</h2>
+    <h2 class="typczcionka opinia">ABOUT US</h2>
     <div class="flex-container">
-      <img src="{{asset('photos/kadra.jpg')}}" alt="Lights" class="wymiar-kadra">
+      <img src="{{asset('photos/kadra.jpg')}}" alt="Lights" class="wymiar-kadra typczcionka">
       <div class="text-container">
-    <p class="text-justify">We are a team of experienced plastic surgeons ready to provide you with a comprehensive range of plastic surgery services. 
+    <p class="text-justify typczcionka">We are a team of experienced plastic surgeons ready to provide you with a comprehensive range of plastic surgery services. 
         Our plastic surgery clinic is equipped with state-of-the-art medical equipment, and our specialists have extensive experience and deep knowledge in their field. 
         We understand the importance of your trust and sense of security during plastic surgery procedures. Therefore, we prioritize an individual approach to each patient, 
         carefully listening to your needs and expectations. Our priority is to ensure the highest quality of medical care and achieve the best possible results. 
@@ -252,13 +283,13 @@
 
 <section>
 
-<h2>OPINIONS</h2>
+<h2 class=" typczcionka opinia">OPINIONS</h2>
 <div class="row">
   <div class="col-md-4">
     <div class="thumbnail">
         <img src="{{asset('photos/1.jpg')}}" alt="Lights" class="wymiar">
         <div class="caption">
-          <p class="wymiar-text czcionka">
+          <p class="wymiar-text czcionka typczcionka">
             Name: Mateusz <br>
             Gender: Male <br>
             Weight: 65 kg <br>
@@ -273,7 +304,7 @@
     <div class="thumbnail">
         <img src="{{asset('photos/2.jpg')}}" alt="Lights" class="wymiar">
         <div class="caption">
-        <p class="wymiar-text czcionka">
+        <p class="wymiar-text czcionka typczcionka ">
             Name: Kacper <br>
             Gender: Male <br>
             Weight: 73 kg <br>
@@ -288,7 +319,7 @@
     <div class="thumbnail">
         <img src="{{asset('photos/3.jpg')}}" alt="Lights" class="wymiar">
         <div class="caption">
-        <p class="wymiar-text czcionka">
+        <p class="wymiar-text czcionka typczcionka">
             Name: Oliwia <br>
             Gender: Female <br>
             Weight: 57 kg <br>
@@ -305,7 +336,7 @@
     <div class="thumbnail">
         <img src="{{asset('photos/4.jpg')}}" alt="Lights" class="wymiar">
         <div class="caption">
-        <p class="wymiar-text czcionka">
+        <p class="wymiar-text czcionka typczcionka">
             Name: Monika <br>
             Gender: Female <br>
             Weight: 63 kg <br>
@@ -320,7 +351,7 @@
     <div class="thumbnail">
         <img src="{{asset('photos/5.jpg')}}" alt="Lights" class="wymiar">
         <div class="caption">
-        <p class="wymiar-text czcionka">
+        <p class="wymiar-text czcionka typczcionka">
             Name: Mike <br>
             Gender: Male <br>
             Weight: 67 kg <br>
@@ -335,7 +366,7 @@
     <div class="thumbnail">
         <img src="{{asset('photos/6.jpg')}}" alt="Lights" class="wymiar">
         <div class="caption">
-        <p class="wymiar-text czcionka">
+        <p class="wymiar-text czcionka typczcionka">
             Name: Barbara <br>
             Gender: Female <br>
             Weight: 63 kg <br>
@@ -348,7 +379,7 @@
   </div>
 </div>
   
-  
+
 </div>
     
 </section>

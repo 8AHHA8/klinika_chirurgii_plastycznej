@@ -32,3 +32,17 @@ Route::get('/services', function () {
 Route::get('/contact', function () {
     return view('contact');
 });
+
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::get('/booking', function () {
+    return view('booking');
+});
+
+// Route::get('/', [DoctorController::class, 'index']);
+// Route::get('/', [DoctorController::class, 'index']);
+// Route::get('/', [DoctorController::class, 'index']);
+// Route::get('/', [DoctorController::class, 'index']);
+// Route::get('/', [DoctorController::class, 'index']);
