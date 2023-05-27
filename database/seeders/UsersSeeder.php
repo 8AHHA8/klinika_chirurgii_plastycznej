@@ -22,7 +22,8 @@ class UsersSeeder extends Seeder
                 'pesel' => '12345678900',
                 'e-mail' => 'john@example.com',
                 'password' => bcrypt('password'),
-                'wait_time' => '2'
+                'wait_time' => '2',
+                'role' => '2',
             ],
             
             [
@@ -32,7 +33,8 @@ class UsersSeeder extends Seeder
                 'pesel' => '23456789010',
                 'e-mail' => 'jane@example.com',
                 'password' => bcrypt('password'),
-                'wait_time' => '3'
+                'wait_time' => '3',
+                'role' => '2',
             ],
             
             [
@@ -42,7 +44,8 @@ class UsersSeeder extends Seeder
                 'pesel' => '34567890123',
                 'e-mail' => 'mike@example.com',
                 'password' => bcrypt('password'),
-                'wait_time' => '1'
+                'wait_time' => '1',
+                'role' => '2',
             ],
             
             [
@@ -52,7 +55,8 @@ class UsersSeeder extends Seeder
                 'pesel' => '45678901234',
                 'e-mail' => 'sarah@example.com',
                 'password' => bcrypt('password'),
-                'wait_time' => '4'
+                'wait_time' => '4',
+                'role' => '2',
             ],
             
             [
@@ -62,7 +66,8 @@ class UsersSeeder extends Seeder
                 'pesel' => '56789012345',
                 'e-mail' => 'michael@example.com',
                 'password' => bcrypt('password'),
-                'wait_time' => '5'
+                'wait_time' => '5',
+                'role' => '2',
             ],
             
             [
@@ -72,7 +77,8 @@ class UsersSeeder extends Seeder
                 'pesel' => '67890123456',
                 'e-mail' => 'emily@example.com',
                 'password' => bcrypt('password'),
-                'wait_time' => '3'
+                'wait_time' => '3',
+                'role' => '2',
             ],
             
             [
@@ -82,7 +88,8 @@ class UsersSeeder extends Seeder
                 'pesel' => '78901234567',
                 'e-mail' => 'david@example.com',
                 'password' => bcrypt('password'),
-                'wait_time' => '1'
+                'wait_time' => '1',
+                'role' => '2',
             ],
             
             [
@@ -92,7 +99,8 @@ class UsersSeeder extends Seeder
                 'pesel' => '89012345678',
                 'e-mail' => 'olivia@example.com',
                 'password' => bcrypt('password'),
-                'wait_time' => '2'
+                'wait_time' => '2',
+                'role' => '2',
             ],
             
             [
@@ -103,6 +111,7 @@ class UsersSeeder extends Seeder
                 'e-mail' => 'daniel@example.com',
                 'password' => bcrypt('password'),
                 'wait_time' => '6',
+                'role' => '2'
         ]]);
     }
 }

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('e-mail');
             $table->string('password');
             $table->integer('wait_time');
+            $table->integer('role');
             
             $table->rememberToken();
             $table->timestamps();

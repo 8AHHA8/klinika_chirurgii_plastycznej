@@ -105,8 +105,8 @@ h1 {
     <div class="container moveup">
         <h1>User Login</h1>
         <form class="login-form">
-            <label for="username" class="typczcionka">Username</label>
-            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            <label for="e-mail" class="typczcionka">E-mail</label>
+            <input type="text" id="e-mail" name="e-mail" placeholder="Enter your e-mail" required>
 
             <label for="password" class="typczcionka">Password</label>
             <input type="password" id="password" name="password" placeholder="Enter your password" required>
