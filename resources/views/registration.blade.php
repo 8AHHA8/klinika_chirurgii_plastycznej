@@ -93,6 +93,7 @@
             background-image: url("{{asset('photos/background_corridor.jpg')}}");
             background-size: cover;
             background-position: center;
+            padding: 0;
         }
 
         .moveup {

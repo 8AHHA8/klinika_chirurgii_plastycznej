@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('surname');
-            $table->integer('phone_number')->unique();
-            $table->integer('pesel')->unique();
-            $table->string('e-mail')->unique();
-            $table->string('password')->unique();
-            $table->integer('wait_time')->unique();
+            $table->integer('phone_number');
+            $table->string('pesel', 11);
+            $table->string('e-mail');
+            $table->string('password');
+            $table->integer('wait_time');
+            
             $table->rememberToken();
             $table->timestamps();
         });

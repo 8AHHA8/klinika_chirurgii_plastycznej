@@ -40,9 +40,3 @@ Route::get('/login', function () {
 Route::get('/booking', function () {
     return view('booking');
 });
-
-// Route::get('/', [DoctorController::class, 'index']);
-// Route::get('/', [DoctorController::class, 'index']);
-// Route::get('/', [DoctorController::class, 'index']);
-// Route::get('/', [DoctorController::class, 'index']);
-// Route::get('/', [DoctorController::class, 'index']);

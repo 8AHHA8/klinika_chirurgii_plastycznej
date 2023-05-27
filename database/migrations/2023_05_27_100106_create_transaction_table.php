@@ -13,12 +13,11 @@ return new class extends Migration
     {
         Schema::create('transaction', function (Blueprint $table) {
             $table->id();
-            $table->date('registration');
-            $table->integer('price')->unique();
-            $table->integer('treatments_performed')->unique();
-            $table->id('surgery_id')->unique();
-            $table->id('doctors_id')->unique();
-            $table->id('users_id')->unique();
+            $table->date('date');
+            $table->integer('price');
+            $table->foreignId('surgery_id')->constrained('surgery');
+            $table->foreignId('doctor_id')->constrained('doctors');
+            $table->foreignId('user_id')->constrained('users');
             $table->rememberToken();
             $table->timestamps();
         });

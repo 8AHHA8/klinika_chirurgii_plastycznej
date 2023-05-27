@@ -14,9 +14,8 @@ return new class extends Migration
         Schema::create('surgery', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('surname');
-            $table->integer('price')->unique();
-            $table->date('date')->unique();
+            $table->integer('price');
+            $table->date('date');
             $table->rememberToken();
             $table->timestamps();
         });

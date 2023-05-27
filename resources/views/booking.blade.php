@@ -73,6 +73,7 @@
         background-image: url("{{asset('photos/background_corridor.jpg')}}");
         background-size: cover;
         background-position: center;
+        padding: 0;
     }
 
     .moveup {
@@ -137,6 +138,7 @@
             <option value="thigh-lift" class="typczcionka">Thigh Lift</option>
             <option value="arm-lift" class="typczcionka">Arm Lift</option>
             <option value="face-lift" class="typczcionka">Face Lift</option>
+            <option value="eye-tattoo" class="typczcionka">Eye Tattoo</option>
             </select>
 
             <label for="registrationDate" class="typczcionka">Booking Date:</label>

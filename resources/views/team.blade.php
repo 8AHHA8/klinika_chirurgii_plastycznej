@@ -83,6 +83,7 @@
             background-size: fill;
             background-position: center;
             background-repeat: no-repeat;
+            padding: 0;
         }
 
         .movedown {

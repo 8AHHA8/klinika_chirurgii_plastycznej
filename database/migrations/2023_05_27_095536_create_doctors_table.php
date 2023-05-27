@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('surname');
-            $table->string('e-mail')->unique();
-            $table->integer('advancement_level')->unique();
+            $table->string('e-mail');
+            $table->string('advancement_level');
             $table->rememberToken();
             $table->timestamps();
         });
