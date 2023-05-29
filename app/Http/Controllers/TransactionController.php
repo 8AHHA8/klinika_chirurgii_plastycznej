@@ -6,6 +6,9 @@ use App\Models\Transaction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTransactionRequest;
 use App\Http\Requests\UpdateTransactionRequest;
+use App\Models\Surgery;
+use Illuminate\Support\Facades\View;
+
 
 class TransactionController extends Controller
 {
@@ -14,7 +17,9 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        $bookings =  Transaction::with('surgery')->get();
+
+        return View::make('booking')->with('bookings', $bookings);
     }
 
     /**

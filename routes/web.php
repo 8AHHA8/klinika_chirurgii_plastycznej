@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DoctorsController;
 use App\Http\Controllers\SurgeryController;
-
+use App\Http\Controllers\TransactionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,9 +28,9 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/booking', function () {
-    return view('booking');
-});
+// Route::get('/booking', function () {
+//     return view('booking');
+// });
 
 // Trasa do formularza logowania
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -39,6 +39,8 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/doctors', [DoctorsController::class, 'index'])->name('doctors');
 
 Route::get('/services', [SurgeryController::class, 'index'])->name('surgery');
+
+Route::get('/booking', [TransactionController::class, 'index'])->name('booking');
 
 // Trasa do formularza rejestracji
 Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');

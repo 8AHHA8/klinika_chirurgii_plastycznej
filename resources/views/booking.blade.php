@@ -114,38 +114,16 @@
             <input type="password" id="password" name="password" placeholder="Enter your password" required>
 
             <label for="service" class="typczcionka">Select a Service</label>
-            <select id="service" name="service">
-            <option value="liposuction" class="typczcionka">Liposuction</option>
-            <option value="facelift" class="typczcionka">Facelift</option>
-            <option value="rhinoplasty" class="typczcionka">Rhinoplasty</option>
-            <option value="eyelid-surgery" class="typczcionka">Eyelid Surgery</option>
-            <option value="lip-augmentation" class="typczcionka">Lip Augmentation</option>
-            <option value="body-lift" class="typczcionka">Body Lift</option>
-            <option value="brow-lift" class="typczcionka">Brow Lift</option>
-            <option value="liposculpture" class="typczcionka">Liposculpture</option>
-            <option value="laser-hair-removal" class="typczcionka">Laser Hair Removal</option>
-            <option value="chemical-peel" class="typczcionka">Chemical Peel</option>
-            <option value="dermal-fillers" class="typczcionka">Dermal Fillers</option>
-            <option value="varicose-vein-treatment" class="typczcionka">Varicose Vein Treatment</option>
-            <option value="hair-transplantation" class="typczcionka">Hair Transplantation</option>
-            <option value="botox-injections" class="typczcionka">Botox Injections</option>
-            <option value="tummy-tuck" class="typczcionka">Tummy Tuck</option>
-            <option value="microdermabrasion" class="typczcionka">Microdermabrasion</option>
-            <option value="skin-tightening" class="typczcionka">Skin Tightening</option>
-            <option value="body-contouring" class="typczcionka">Body Contouring</option>
-            <option value="ear-surgery" class="typczcionka">Ear Surgery</option>
-            <option value="laser-resurfacing" class="typczcionka">Laser Resurfacing</option>
-            <option value="thigh-lift" class="typczcionka">Thigh Lift</option>
-            <option value="arm-lift" class="typczcionka">Arm Lift</option>
-            <option value="face-lift" class="typczcionka">Face Lift</option>
-            <option value="eye-tattoo" class="typczcionka">Eye Tattoo</option>
+            <select id="service" name="service" class="typczcionka">
+                @foreach ($bookings as $booking)
+                    @if ($booking->surgery && $booking->surgery->name)
+                        <option value="{{ $booking->id }}">{{ $booking->surgery->name }}</option>
+                    @endif
+                @endforeach
             </select>
 
             <label for="registrationDate" class="typczcionka">Booking Date:</label>
             <input type="date" id="registrationDate" name="registrationDate" required>
-
-            <label for="payment" class="typczcionka">Payment:</label>
-            <input type="number" id="fee" name="payment" placeholder="Enter the payment" required>
 
             <button type="submit">Log In</button>
         </form>

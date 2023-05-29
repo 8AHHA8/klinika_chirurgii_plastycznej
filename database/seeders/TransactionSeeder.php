@@ -19,7 +19,7 @@ class TransactionSeeder extends Seeder
         // Zabiegi wykonywane przez klientów
 
         // Klient 1 (id: 1)
-        DB::table('transaction')->insert([
+        DB::table('transactions')->insert([
             [
                 'surgery_id' => 1,
                 'doctor_id' => 1,
@@ -37,7 +37,7 @@ class TransactionSeeder extends Seeder
         ]);
 
         // Klient 2 (id: 2)
-        DB::table('transaction')->insert([
+        DB::table('transactions')->insert([
             [
                 'surgery_id' => 3,
                 'doctor_id' => 3,
@@ -55,7 +55,7 @@ class TransactionSeeder extends Seeder
         ]);
 
         // Klient 3 (id: 3)
-        DB::table('transaction')->insert([
+        DB::table('transactions')->insert([
             [
                 'surgery_id' => 5,
                 'doctor_id' => 1,
@@ -73,7 +73,7 @@ class TransactionSeeder extends Seeder
         ]);
 
         // Klient 4 (id: 4)
-        DB::table('transaction')->insert([
+        DB::table('transactions')->insert([
             [
                 'surgery_id' => 7,
                 'doctor_id' => 3,
@@ -91,7 +91,7 @@ class TransactionSeeder extends Seeder
         ]);
 
         // Klient 5 (id: 5)
-        DB::table('transaction')->insert([
+        DB::table('transactions')->insert([
             [
                 'surgery_id' => 9,
                 'doctor_id' => 1,
@@ -102,7 +102,7 @@ class TransactionSeeder extends Seeder
         ]);
 
         // Klient 6 (id: 6)
-        DB::table('transaction')->insert([
+        DB::table('transactions')->insert([
             [
                 'surgery_id' => 10,
                 'doctor_id' => 2,
@@ -113,7 +113,7 @@ class TransactionSeeder extends Seeder
         ]);
 
         // Klient 7 (id: 7)
-        DB::table('transaction')->insert([
+        DB::table('transactions')->insert([
             [
                 'surgery_id' => 11,
                 'doctor_id' => 3,
@@ -124,7 +124,7 @@ class TransactionSeeder extends Seeder
         ]);
 
         // Klient 8 (id: 8)
-        DB::table('transaction')->insert([
+        DB::table('transactions')->insert([
             [
                 'surgery_id' => 12,
                 'doctor_id' => 4,
@@ -135,7 +135,7 @@ class TransactionSeeder extends Seeder
         ]);
 
         // Klient 9 (id: 9)
-        DB::table('transaction')->insert([
+        DB::table('transactions')->insert([
             [
                 'surgery_id' => 13,
                 'doctor_id' => 1,
@@ -154,7 +154,7 @@ class TransactionSeeder extends Seeder
         foreach ($surgeryIds as $index => $surgeryId) {
             $doctorId = $doctorIds[$index % count($doctorIds)];
 
-            DB::table('transaction')->insert([
+            DB::table('transactions')->insert([
                 'surgery_id' => $surgeryId,
                 'doctor_id' => $doctorId,
                 'user_id' => 1,
