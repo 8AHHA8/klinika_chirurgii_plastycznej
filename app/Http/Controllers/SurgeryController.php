@@ -6,6 +6,7 @@ use App\Models\Surgery;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSurgeryRequest;
 use App\Http\Requests\UpdateSurgeryRequest;
+use Illuminate\Support\Facades\View;
 
 class SurgeryController extends Controller
 {
@@ -14,7 +15,9 @@ class SurgeryController extends Controller
      */
     public function index()
     {
-        //
+        $services = Surgery::all();
+
+        return View::make('services')->with('services', $services);
     }
 
     /**

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DoctorsController;
+use App\Http\Controllers\SurgeryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,13 +20,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/team', function () {
-//     return view('team');
+// Route::get('/services', function () {
+//     return view('services');
 // });
-
-Route::get('/services', function () {
-    return view('services');
-});
 
 Route::get('/contact', function () {
     return view('contact');
@@ -40,6 +37,8 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/doctors', [DoctorsController::class, 'index'])->name('doctors');
+
+Route::get('/services', [SurgeryController::class, 'index'])->name('surgery');
 
 // Trasa do formularza rejestracji
 Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
