@@ -271,9 +271,9 @@ footer p {
         $isUserLoggedIn = false; // Zmienna określająca, czy użytkownik jest zalogowany (wartość logiczna true/false)
         
         if ($isUserLoggedIn) {
-            echo '<a href="http://127.0.0.1:8000/logout" class="typczcionka">Log out</a>';
+            echo '<a href="/logout" class="typczcionka">Log out</a>';
         } else {
-            echo '<a href="http://127.0.0.1:8000/login" class="typczcionka">Login</a>';
+            echo '<a href="/login" class="typczcionka">Login</a>';
         }
         ?>
     </div>
@@ -281,11 +281,11 @@ footer p {
 
     <nav>
         <ul>
-            <li><a href="http://127.0.0.1:8000/registration" class="typczcionka">PATIENT REGISTRATION</a></li>
-            <li><a href="http://127.0.0.1:8000/doctors" class="typczcionka">OUR TEAM</a></li>
-            <li><a href="http://127.0.0.1:8000/services" class="typczcionka" >SERVICES</a></li>
-            <li><a href="http://127.0.0.1:8000/booking"class="typczcionka">BOOKING</a></li>
-            <li><a href="http://127.0.0.1:8000/contact" class="typczcionka">CONTACT</a></li>
+            <li><a href="/registration" class="typczcionka">PATIENT REGISTRATION</a></li>
+            <li><a href="/doctors" class="typczcionka">OUR TEAM</a></li>
+            <li><a href="/services" class="typczcionka" >SERVICES</a></li>
+            <li><a href="/booking"class="typczcionka">BOOKING</a></li>
+            <li><a href="/contact" class="typczcionka">CONTACT</a></li>
         </ul>
     </nav>
 

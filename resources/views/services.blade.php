@@ -54,7 +54,7 @@
     </style>
 </head>
 <body>
-<a class="back-button" href="http://127.0.0.1:8000"><img src="{{asset('photos/powrot.png')}}" alt="Back to Homepage" class="wymiar"></a>
+<a class="back-button" href="/"><img src="{{asset('photos/powrot.png')}}" alt="Back to Homepage" class="wymiar"></a>
     <div class="container">
         <h1 class="typczcionka">SOME OF OUR SERVICES</h1>
         <p class="dostosuj typczcionka">DISCLAIMER: SURGERIES LISTED HERE ARE NOT THE ONLY ONES WE PERFORM</p>

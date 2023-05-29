@@ -103,7 +103,7 @@
 </head>
 <body>
 <div class="image-background">
-    <a class="back-button" href="http://127.0.0.1:8000"><img src="{{asset('photos/powrot.png')}}" alt="Back to Homepage" class="wymiar"></a>
+    <a class="back-button" href="/"><img src="{{asset('photos/powrot.png')}}" alt="Back to Homepage" class="wymiar"></a>
     <div class="container moveup">
         <h1 class="typczcionka">BOOKING</h1>
         <form class="login-form">
@@ -116,9 +116,9 @@
             <label for="service" class="typczcionka">Select a Service</label>
             <select id="service" name="service" class="typczcionka">
                 @foreach ($bookings as $booking)
-                    @if ($booking->surgery && $booking->surgery->name)
-                        <option value="{{ $booking->id }}">{{ $booking->surgery->name }}</option>
-                    @endif
+                    <option value="{{ $booking->id }}">
+                        {{ optional($booking->surgery)->name }} - {{ optional($booking->surgery)->price }}$
+                    </option>
                 @endforeach
             </select>
 

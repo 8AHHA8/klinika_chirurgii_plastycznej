@@ -8,6 +8,7 @@ use App\Http\Requests\StoreTransactionRequest;
 use App\Http\Requests\UpdateTransactionRequest;
 use App\Models\Surgery;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Carbon;
 
 
 class TransactionController extends Controller
@@ -15,11 +16,23 @@ class TransactionController extends Controller
     /**
      * Display a listing of the resource.
      */
+    // public function index()
+    // {
+    //     $bookings =  Transaction::with('surgery')->get();
+
+    //     return View::make('booking')->with('bookings', $bookings);
+    // }
+
     public function index()
     {
-        $bookings =  Transaction::with('surgery')->get();
+        $bookings = Transaction::with('surgery')->get();
 
-        return View::make('booking')->with('bookings', $bookings);
+        $occupiedDates = Transaction::pluck('registration_date')->toArray();
+        $occupiedDates = array_map(function ($date) {
+            return Carbon::parse($date)->format('Y-m-d');
+        }, $occupiedDates);
+
+        return View::make('booking', compact('bookings', 'occupiedDates'));
     }
 
     /**

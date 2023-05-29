@@ -20,21 +20,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/services', function () {
-//     return view('services');
-// });
-
 Route::get('/contact', function () {
     return view('contact');
-});
-
-// Route::get('/booking', function () {
-//     return view('booking');
-// });
-
-// Trasa do formularza logowania
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
+})->name('contact');
 
 Route::get('/doctors', [DoctorsController::class, 'index'])->name('doctors');
 
@@ -42,9 +30,14 @@ Route::get('/services', [SurgeryController::class, 'index'])->name('surgery');
 
 Route::get('/booking', [TransactionController::class, 'index'])->name('booking');
 
+// Trasa do formularza logowania
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+
 // Trasa do formularza rejestracji
 Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
 
 // Trasa do wylogowywania użytkownika
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+

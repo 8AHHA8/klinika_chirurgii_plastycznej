@@ -118,7 +118,7 @@
 
 <body>
 <div class="image-background">
-    <a class="back-button" href="http://127.0.0.1:8000"><img src="{{ asset('photos/powrot.png') }}" alt="Back to Homepage" class="wymiar"></a>
+    <a class="back-button" href="/"><img src="{{ asset('photos/powrot.png') }}" alt="Back to Homepage" class="wymiar"></a>
     <div class="container movedown">
         <h1>Meet Our Doctors</h1>
 
