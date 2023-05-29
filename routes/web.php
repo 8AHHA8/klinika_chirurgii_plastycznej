@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DoctorsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/registration', function () {
-    return view('registration');
-});
-
 Route::get('/team', function () {
     return view('team');
 });
@@ -33,10 +31,19 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/login', function () {
-    return view('login');
-});
-
 Route::get('/booking', function () {
     return view('booking');
 });
+
+// Trasa do formularza logowania
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::get('/doctors', [DoctorsController::class, 'index'])->name('doctors');
+
+// Trasa do formularza rejestracji
+Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+
+// Trasa do wylogowywania użytkownika
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

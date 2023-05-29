@@ -18,6 +18,23 @@
             });
         });
     </script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        const loginOption = document.querySelector('.login-option a');
+        
+        // Sprawdzanie statusu logowania użytkownika
+        const isUserLoggedIn = false; // Zmienna określająca, czy użytkownik jest zalogowany (wartość logiczna true/false)
+        
+        if (isUserLoggedIn) {
+            loginOption.href = 'http://127.0.0.1:8000/logout';
+            loginOption.textContent = 'Log out';
+        } else {
+            loginOption.href = 'http://127.0.0.1:8000/login';
+            loginOption.textContent = 'Login';
+        }
+    });
+</script>
     <style>
         /* Resetowanie stylów */
 * {
@@ -249,8 +266,17 @@ footer p {
         <h1 class="typczcionka">PLASTIC SURGERY CLINIC FACILITY</h1>
         <p class="odstep wielkosc typczcionka">YOU CAN CHANGE YOURSELF WITH US</p>
         <div class="login-option">
-            <a href="http://127.0.0.1:8000/login" class=" typczcionka">Login</a>
-        </div>
+        <?php
+        // Sprawdzanie statusu logowania użytkownika
+        $isUserLoggedIn = false; // Zmienna określająca, czy użytkownik jest zalogowany (wartość logiczna true/false)
+        
+        if ($isUserLoggedIn) {
+            echo '<a href="http://127.0.0.1:8000/logout" class="typczcionka">Log out</a>';
+        } else {
+            echo '<a href="http://127.0.0.1:8000/login" class="typczcionka">Login</a>';
+        }
+        ?>
+    </div>
     </header>
 
     <nav>

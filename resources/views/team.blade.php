@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,6 +50,7 @@
             color: #333333;
             margin-bottom: 10px;
         }
+
         .doctor-name:hover {
             transition: font-size 700ms ease;
             font-size: 21px;
@@ -59,6 +61,7 @@
             color: #666666;
             margin-bottom: 10px;
         }
+
         .doctor-specialty:hover {
             transition: font-size 700ms ease;
             font-size: 17px;
@@ -69,7 +72,9 @@
             color: #999999;
             text-align: justify;
         }
-        .doctor-description {
+
+        .doctor-description:hover {
+            transition: font-size 700ms ease;
             font-size: 16px;
         }
 
@@ -80,7 +85,7 @@
             display: flex;
             align-items: flex-end;
             background-image: url("{{asset('photos/background_corridor.jpg')}}");
-            background-size: fill;
+            background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             padding: 0;
@@ -96,65 +101,39 @@
             left: 10px;
         }
 
-        .wymiar{
+        .wymiar {
             width: 80px;
         }
 
-        .wymiar:hover{
+        .wymiar:hover {
             transition: font-size 700ms ease;
             width: 90px;
         }
-        .typczcionka{
+
+        .typczcionka {
             font-family: Arial, Helvetica, sans-serif;
         }
     </style>
 </head>
+
 <body>
 <div class="image-background">
-<a class="back-button" href="http://127.0.0.1:8000"><img src="{{asset('photos/powrot.png')}}" alt="Back to Homepage" class="wymiar"></a>
+    <a class="back-button" href="http://127.0.0.1:8000"><img src="{{ asset('photos/powrot.png') }}" alt="Back to Homepage" class="wymiar"></a>
     <div class="container movedown">
         <h1>Meet Our Doctors</h1>
 
-        <div class="doctor">
-            <img src="{{asset('photos/klaus.jpg')}}" class="doctor-image">
-            <div class="doctor-info">
-                <h2 class="doctor-name typczcionka">Dr. Klaus Lindecker</h2>
-                <p class="doctor-specialty typczcionka">Cosmetic Surgeon</p>
-                <p class="doctor-description typczcionka">Dr. Klaus Lindecker is a renowned cosmetic surgeon known for his exceptional skills in body contouring and aesthetic procedures. 
-                    He specializes in helping patients enhance their physical appearance and achieve their desired results through personalized care and innovative techniques.</p>
-            </div>
-        </div>
-
-        <div class="doctor">
-            <img src="{{asset('photos/zofia.jpg')}}" class="doctor-image">
-            <div class="doctor-info">
-                <h2 class="doctor-name typczcionka">Dr. Zofia Ratajkowska</h2>
-                <p class="doctor-specialty typczcionka">Plastic Surgeon</p>
-                <p class="doctor-description typczcionka">Dr. Zofia Ratajkowska is a highly skilled plastic surgeon with several years of experience. 
-                    She specializes in facial reconstruction and has a passion for helping her patients enhance their natural beauty.</p>
-            </div>
-        </div>
-
-        <div class="doctor">
-            <img src="{{asset('photos/zbigniew.jpg')}}" class="doctor-image">
-            <div class="doctor-info">
-                <h2 class="doctor-name typczcionka">Dr. Zbidniew Dąbrowski</h2>
-                <p class="doctor-specialty typczcionka">Facial Plastic Surgeon</p>
-                <p class="doctor-description typczcionka">Dr. Zbigniew Dąbrowski is a skilled facial plastic surgeon with expertise in rhinoplasty and facelift procedures. 
-                    He is committed to providing personalized care and helping his patients achieve their aesthetic goals.</p>
-            </div>
-        </div>
-
-        <div class="doctor">
-            <img src="{{asset('photos/anna.jpg')}}" class="doctor-image">
-            <div class="doctor-info">
-                <h2 class="doctor-name typczcionka">Dr. Anna Lazarowicz</h2>
-                <p class="doctor-specialty typczcionka">Plastic Surgeon</p>
-                <p class="doctor-description typczcionka">Dr. Anna Lazarowicz is a board-certified plastic surgeon specializing in reconstructive and aesthetic procedures. 
-                    She has a gentle and caring approach towards her patients and is dedicated to achieving natural-looking results.</p>
-            </div>
+        @foreach ($doctors as $doctor)
+    <div class="doctor">
+        <img src="{{ asset($doctor->image) }}" class="doctor-image">
+        <div class="doctor-info">
+            <h2 class="doctor-name typczcionka">{{ $doctor->name }} {{ $doctor->surname }}</h2>
+            <p class="doctor-specialty typczcionka">{{ $doctor->specialty }}</p>
+            <p class="doctor-description typczcionka">{{ $doctor->description }}</p>
         </div>
     </div>
+        @endforeach
+
     </div>
+</div>
 </body>
 </html>

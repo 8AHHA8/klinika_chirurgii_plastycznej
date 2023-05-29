@@ -58,16 +58,16 @@ h1 {
 }
 
 .image-background {
-            height: 100vh;
-            width: 100%;
-            position: relative;
-            display: flex;
-            align-items: flex-end;
-            background-image: url("{{asset('photos/background_corridor.jpg')}}");
-            background-size: cover;
-            background-position: center;
-            padding: 0;
-        }
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    background-image: url("{{asset('photos/background_corridor.jpg')}}");
+    background-size: cover;
+    background-position: center;
+    padding: 0;
+}
 
 .moveup {
     transform: translateY(-20rem);
@@ -75,23 +75,24 @@ h1 {
 
 /* Additional styles for the back button */
 .back-button {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 80px;
-        }
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 80px;
+}
 
-        .wymiar{
-            width: 80px;
-        }
+.wymiar {
+    width: 80px;
+}
 
-        .wymiar:hover{
-            transition: font-size 700ms ease;
-            width: 90px;
-        }
-        .typczcionka{
-            font-family: Arial, Helvetica, sans-serif;
-        }
+.wymiar:hover {
+    transition: font-size 700ms ease;
+    width: 90px;
+}
+
+.typczcionka {
+    font-family: Arial, Helvetica, sans-serif;
+}
 </style>
 <head>
     <meta charset="UTF-8">
@@ -104,7 +105,9 @@ h1 {
     <a class="back-button" href="http://127.0.0.1:8000"><img src="{{asset('photos/powrot.png')}}" alt="Back to Homepage" class="wymiar"></a>
     <div class="container moveup">
         <h1>User Login</h1>
-        <form class="login-form">
+        <form class="login-form" method="POST" action="{{ route('login') }}">
+            @csrf <!-- Dodaj CSRF token -->
+
             <label for="e-mail" class="typczcionka">E-mail</label>
             <input type="text" id="e-mail" name="e-mail" placeholder="Enter your e-mail" required>
 
@@ -112,9 +115,14 @@ h1 {
             <input type="password" id="password" name="password" placeholder="Enter your password" required>
 
             <button type="submit" class="typczcionka">Log In</button>
+
+            @if($errors->has('e-mail'))
+                <div class="alert alert-danger typczcionka">
+                    {{ $errors->first('e-mail') }}
+                </div>
+            @endif
         </form>
     </div>
-</a>
 </div>
 </body>
 </html>
