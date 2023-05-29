@@ -19,9 +19,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/team', function () {
-    return view('team');
-});
+// Route::get('/team', function () {
+//     return view('team');
+// });
 
 Route::get('/services', function () {
     return view('services');

@@ -282,7 +282,7 @@ footer p {
     <nav>
         <ul>
             <li><a href="http://127.0.0.1:8000/registration" class="typczcionka">PATIENT REGISTRATION</a></li>
-            <li><a href="http://127.0.0.1:8000/team" class="typczcionka">OUR TEAM</a></li>
+            <li><a href="http://127.0.0.1:8000/doctors" class="typczcionka">OUR TEAM</a></li>
             <li><a href="http://127.0.0.1:8000/services" class="typczcionka" >SERVICES</a></li>
             <li><a href="http://127.0.0.1:8000/booking"class="typczcionka">BOOKING</a></li>
             <li><a href="http://127.0.0.1:8000/contact" class="typczcionka">CONTACT</a></li>
