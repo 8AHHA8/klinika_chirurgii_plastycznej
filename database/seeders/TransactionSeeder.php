@@ -4,6 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+use App\Models\Surgery;
+use App\Models\User;
+use App\Models\Doctors;
 
 class TransactionSeeder extends Seeder
 {
@@ -12,155 +16,37 @@ class TransactionSeeder extends Seeder
      */
     public function run(): void
     {
-        // Doktorzy: 1, 2, 3, 4
-        // Klienci: 1, 2, 3, 4, 5, 6, 7, 8, 9
-        // Troje klientów przeszło po 2 zabiegi, 1 przeszedł 3 zabiegi, a reszta po jednym.
-
-        // Zabiegi wykonywane przez klientów
-
-        // Klient 1 (id: 1)
-        DB::table('transactions')->insert([
-            [
-                'surgery_id' => 1,
-                'doctor_id' => 1,
-                'user_id' => 1,
-                'date' => '2023-04-01',
-                'price' => 8000, // Cena dla Liposuction
-            ],
-            [
-                'surgery_id' => 2,
-                'doctor_id' => 2,
-                'user_id' => 1,
-                'date' => '2023-04-02',
-                'price' => 6000, // Cena dla Facelift
-            ],
-        ]);
-
-        // Klient 2 (id: 2)
-        DB::table('transactions')->insert([
-            [
-                'surgery_id' => 3,
-                'doctor_id' => 3,
-                'user_id' => 2,
-                'date' => '2023-04-03',
-                'price' => 10000, // Cena dla Rhinoplasty
-            ],
-            [
-                'surgery_id' => 4,
-                'doctor_id' => 4,
-                'user_id' => 2,
-                'date' => '2023-04-04',
-                'price' => 16000, // Cena dla Eyelid Surgery
-            ],
-        ]);
-
-        // Klient 3 (id: 3)
-        DB::table('transactions')->insert([
-            [
-                'surgery_id' => 5,
-                'doctor_id' => 1,
-                'user_id' => 3,
-                'date' => '2023-04-05',
-                'price' => 4000, // Cena dla Lip Augmentation
-            ],
-            [
-                'surgery_id' => 6,
-                'doctor_id' => 2,
-                'user_id' => 3,
-                'date' => '2023-04-06',
-                'price' => 23000, // Cena dla Body Lift
-            ],
-        ]);
-
-        // Klient 4 (id: 4)
-        DB::table('transactions')->insert([
-            [
-                'surgery_id' => 7,
-                'doctor_id' => 3,
-                'user_id' => 4,
-                'date' => '2023-04-07',
-                'price' => 3000, // Cena dla Brow Lift
-            ],
-            [
-                'surgery_id' => 8,
-                'doctor_id' => 4,
-                'user_id' => 4,
-                'date' => '2023-04-08',
-                'price' => 7000, // Cena dla Liposculpture
-            ],
-        ]);
-
-        // Klient 5 (id: 5)
-        DB::table('transactions')->insert([
-            [
-                'surgery_id' => 9,
-                'doctor_id' => 1,
-                'user_id' => 5,
-                'date' => '2023-04-09',
-                'price' => 18000, // Cena dla Tummy Tuck
-            ],
-        ]);
-
-        // Klient 6 (id: 6)
-        DB::table('transactions')->insert([
-            [
-                'surgery_id' => 10,
-                'doctor_id' => 2,
-                'user_id' => 6,
-                'date' => '2023-04-10',
-                'price' => 9000, // Cena dla Hair Transplant
-            ],
-        ]);
-
-        // Klient 7 (id: 7)
-        DB::table('transactions')->insert([
-            [
-                'surgery_id' => 11,
-                'doctor_id' => 3,
-                'user_id' => 7,
-                'date' => '2023-04-11',
-                'price' => 5000, // Cena dla Otoplasty
-            ],
-        ]);
-
-        // Klient 8 (id: 8)
-        DB::table('transactions')->insert([
-            [
-                'surgery_id' => 12,
-                'doctor_id' => 4,
-                'user_id' => 8,
-                'date' => '2023-04-12',
-                'price' => 11000, // Cena dla Breast Augmentation
-            ],
-        ]);
-
-        // Klient 9 (id: 9)
-        DB::table('transactions')->insert([
-            [
-                'surgery_id' => 13,
-                'doctor_id' => 1,
-                'user_id' => 9,
-                'date' => '2023-04-13',
-                'price' => 8000, // Cena dla Liposuction
-            ],
-        ]);
-
-        // Dodatkowe informacje o zabiegach, które nie były wykonane
-
         // Zabiegi niewykonane
-        $surgeryIds = range(14, 24);
-        $doctorIds = [2, 3, 4, 1, 2, 3, 4, 1, 2, 3];
+        $surgeryIds = range(1, 24);
+        $price = Surgery::all()->pluck('price')->toArray();
 
-        foreach ($surgeryIds as $index => $surgeryId) {
-            $doctorId = $doctorIds[$index % count($doctorIds)];
+        $userIds = User::all()->pluck('id')->toArray();
 
-            DB::table('transactions')->insert([
-                'surgery_id' => $surgeryId,
-                'doctor_id' => $doctorId,
-                'user_id' => 1,
-                'date' => '2023-04-14',
-                'price' => 0,
-            ]);
+        foreach ($surgeryIds as $surgeryId) {
+            $advancementLevel = ceil($surgeryId / 6); // Obliczanie poziomu zaawansowania na podstawie id zabiegu
+
+            $doctorIds = Doctors::where('advancement_level', '<=', $advancementLevel)
+            ->pluck('id')
+            ->toArray();
+
+            $doctorId = $doctorIds[array_rand($doctorIds)];
+            $date = Carbon::now()->subMonth()->addDays(rand(0, 90))->format('Y-m-d');
+            $specificPrice = $price[$surgeryId - 1];
+
+            // Generowanie liczby transakcji (od 1 do 2)
+            $numTransactions = rand(1, 2);
+
+            for ($i = 0; $i < $numTransactions; $i++) {
+                $userId = $userIds[array_rand($userIds)];
+
+                DB::table('transactions')->insert([
+                    'surgery_id' => $surgeryId,
+                    'doctor_id' => $doctorId,
+                    'user_id' => $userId,
+                    'date' => $date,
+                    'price' => $specificPrice,
+                ]);
+            }
         }
     }
 }

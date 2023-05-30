@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    @include('flatpickr::components.style')
+    @include('flatpickr::components.script')
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Login</title>
+
     <style>
         /* Reset styles */
     * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
+    }
+
+    .occupied {
+        background-color: #ffcccc;
     }
 
     body {
@@ -99,6 +106,11 @@
     .typczcionka {
         font-family: Arial, Helvetica, sans-serif;
     }
+
+    .flatpickr-day.flatpickr-disabled {
+        background-color: red !important;
+        color: white !important;
+    }
     </style>
 </head>
 <body>
@@ -122,12 +134,23 @@
                 @endforeach
             </select>
 
-            <label for="registrationDate" class="typczcionka">Booking Date:</label>
-            <input type="date" id="registrationDate" name="registrationDate" required>
+            <label for="date" class="typczcionka">Select a Date</label>
+            <!-- Your date input -->
+            <input type="text" id="datepicker">
+            <script>
+                fetch('/disabled-dates')
+                .then(response => response.json())
+                .then(disabledDates => {
+                    flatpickr("#datepicker", {
+                        disable: disabledDates,
+                    });
+                });
+            </script>
 
             <button type="submit">Log In</button>
         </form>
     </div>
 </div>
+
 </body>
 </html>

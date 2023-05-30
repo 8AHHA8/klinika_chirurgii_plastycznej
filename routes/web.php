@@ -29,6 +29,7 @@ Route::get('/doctors', [DoctorsController::class, 'index'])->name('doctors');
 Route::get('/services', [SurgeryController::class, 'index'])->name('surgery');
 
 Route::get('/booking', [TransactionController::class, 'index'])->name('booking');
+Route::get('/disabled-dates', [TransactionController::class, 'getDisabledDates']);
 
 // Trasa do formularza logowania
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
