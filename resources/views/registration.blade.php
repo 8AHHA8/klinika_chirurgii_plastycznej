@@ -25,8 +25,8 @@
 
         .container:hover {
             transition: 700ms ease;
-            width: 510px;
-            height: 780px;
+            width: 502px;
+            height: 772px;
         }
 
         h1 {
@@ -102,11 +102,14 @@
         .typczcionka{
             font-family: Arial, Helvetica, sans-serif;
         }
+
+        .shoveitdown{
+            transform: translateY(3rem);
+        }
     </style>
 </head>
 <body>
     <div class="image-background">
-    <a class="back-button" href="/"><img src="{{asset('photos/powrot.png')}}" alt="Back to Homepage" class="wymiar"></a>
     <div class="container moveup">
         <h1 class="typczcionka">Patient Registration</h1>
         <form>
@@ -128,7 +131,7 @@
             <label for="password" class="typczcionka">Password:</label>
             <input type="text" id="password" name="password" required>
             
-            <input type="submit" value="Register">
+            <input type="submit" value="Register" class="shoveitdown">
         </form>
     </div>
     </div>

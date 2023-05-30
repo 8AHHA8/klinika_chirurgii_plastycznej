@@ -7,9 +7,9 @@
     <title>Doctors - Plastic Surgery Clinic</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
+        body, html {
+            margin: 0;
+            padding: 0;
         }
 
         .container {
@@ -51,31 +51,16 @@
             margin-bottom: 10px;
         }
 
-        .doctor-name:hover {
-            transition: font-size 700ms ease;
-            font-size: 21px;
-        }
-
         .doctor-specialty {
             font-size: 16px;
             color: #666666;
             margin-bottom: 10px;
         }
 
-        .doctor-specialty:hover {
-            transition: font-size 700ms ease;
-            font-size: 17px;
-        }
-
         .doctor-description {
-            font-size: 14px;
-            color: #999999;
+            font-size: 17px;
+            color: black;
             text-align: justify;
-        }
-
-        .doctor-description:hover {
-            transition: font-size 700ms ease;
-            font-size: 16px;
         }
 
         .image-background {
@@ -118,7 +103,6 @@
 
 <body>
 <div class="image-background">
-    <a class="back-button" href="/"><img src="{{ asset('photos/powrot.png') }}" alt="Back to Homepage" class="wymiar"></a>
     <div class="container movedown">
         <h1>Meet Our Doctors</h1>
 

@@ -65,6 +65,6 @@ class AuthController extends Controller
             return redirect('/');
         }
 
-        return view('register');
+        return view('registration');
     }
 }

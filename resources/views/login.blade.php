@@ -102,7 +102,6 @@ font-family: Arial, Helvetica, sans-serif;
 </head>
 <body>
 <div class="image-background">
-    <a class="back-button" href="/"><img src="{{asset('photos/powrot.png')}}" alt="Back to Homepage" class="wymiar"></a>
     <div class="container moveup">
         <h1>User Login</h1>
         <form class="login-form" method="POST" action="{{ route('login') }}">

@@ -36,8 +36,8 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
 // Trasa do formularza rejestracji
-Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [AuthController::class, 'register']);
+Route::get('/registration', [AuthController::class, 'showRegistrationForm'])->name('registration');
+Route::post('/registration', [AuthController::class, 'registration']);
 
 // Trasa do wylogowywania użytkownika
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

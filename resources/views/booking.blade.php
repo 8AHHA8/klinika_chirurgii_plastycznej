@@ -115,7 +115,6 @@
 </head>
 <body>
 <div class="image-background">
-    <a class="back-button" href="/"><img src="{{asset('photos/powrot.png')}}" alt="Back to Homepage" class="wymiar"></a>
     <div class="container moveup">
         <h1 class="typczcionka">BOOKING</h1>
         <form class="login-form">
@@ -127,15 +126,19 @@
 
             <label for="service" class="typczcionka">Select a Service</label>
             <select id="service" name="service" class="typczcionka">
-                @foreach ($bookings as $booking)
-                    <option value="{{ $booking->id }}">
-                        {{ optional($booking->surgery)->name }} - {{ optional($booking->surgery)->price }}$
-                    </option>
+                @foreach ($bookings->unique('surgery_id') as $booking)
+                    @php
+                        $surgery = $booking->surgery;
+                    @endphp
+                    @if ($surgery)
+                        <option value="{{ $booking->id }}">
+                            {{ $surgery->name }} - {{ $surgery->price }}$
+                        </option>
+                    @endif
                 @endforeach
             </select>
 
             <label for="date" class="typczcionka">Select a Date</label>
-            <!-- Your date input -->
             <input type="text" id="datepicker">
             <script>
                 fetch('/disabled-dates')

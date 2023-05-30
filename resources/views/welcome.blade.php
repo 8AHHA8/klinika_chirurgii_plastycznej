@@ -43,10 +43,6 @@
     padding: 0;
 }
 
-body {
-    font-family: 'Open Sans', sans-serif;
-}
-
 /* Dodatkowe style strony */
 
 /* Nagłówek */
@@ -259,10 +255,40 @@ footer p {
     border-bottom: 1px solid #333333;
     padding-bottom: 20px;
 }
+
+/* .image-background {
+        height: 100vh;
+        width: 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        background-image: url("{{asset('photos/cegla.jpg')}}");
+        background-size: cover;
+        background-position: center;
+        padding: 0;
+    } */
+
+    body, html {
+        height: 100%;
+    }
+
+    .parallax {
+        /* The image used */
+        background-image: url("{{asset('photos/cegla.jpg')}}");
+
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
     </style>
 </head>
 <body>
+<div class="parallax"> 
     <header>
+
         <h1 class="typczcionka">PLASTIC SURGERY CLINIC FACILITY</h1>
         <p class="odstep wielkosc typczcionka">YOU CAN CHANGE YOURSELF WITH US</p>
         <div class="login-option">
@@ -406,7 +432,7 @@ footer p {
 </div>
   
 
-</div>
+
     
 </section>
 
@@ -414,5 +440,6 @@ footer p {
     <p>&copy; 2023 Plastic Surgery Clinic Facility. All rights reserved.</p>
 </footer>
 
+</div>  
 </body>
 </html>

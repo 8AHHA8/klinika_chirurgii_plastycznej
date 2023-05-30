@@ -16,14 +16,13 @@ class TransactionSeeder extends Seeder
      */
     public function run(): void
     {
-        // Zabiegi niewykonane
         $surgeryIds = range(1, 24);
         $price = Surgery::all()->pluck('price')->toArray();
 
         $userIds = User::all()->pluck('id')->toArray();
 
         foreach ($surgeryIds as $surgeryId) {
-            $advancementLevel = ceil($surgeryId / 6); // Obliczanie poziomu zaawansowania na podstawie id zabiegu
+            $advancementLevel = ceil($surgeryId / 6); // obliczanie poziomu zaawansowania na podstawie id zabiegu
 
             $doctorIds = Doctors::where('advancement_level', '<=', $advancementLevel)
             ->pluck('id')
@@ -33,10 +32,11 @@ class TransactionSeeder extends Seeder
             $date = Carbon::now()->subMonth()->addDays(rand(0, 90))->format('Y-m-d');
             $specificPrice = $price[$surgeryId - 1];
 
-            // Generowanie liczby transakcji (od 1 do 2)
-            $numTransactions = rand(1, 2);
+            $numTransactions = DB::table('transactions') // sprawdzenie liczby zabiegów w danym dniu
+                ->where('date', $date)
+                ->count();
 
-            for ($i = 0; $i < $numTransactions; $i++) {
+            while ($numTransactions < 2) {  // maksymalnie dwie transakcje na dzień
                 $userId = $userIds[array_rand($userIds)];
 
                 DB::table('transactions')->insert([
@@ -46,6 +46,12 @@ class TransactionSeeder extends Seeder
                     'date' => $date,
                     'price' => $specificPrice,
                 ]);
+
+                $numTransactions++;
+
+                if ($numTransactions >= 2) { // przerwanie pętli, jeśli dodano już dwie transakcje
+                    break;
+                }
             }
         }
     }

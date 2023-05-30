@@ -3,6 +3,11 @@
 <head>
     <title>Contact Us</title>
     <style>
+        body, html {
+        margin: 0;
+        padding: 0;
+    }
+
         .container {
             max-width: 800px;
             margin: 50px auto;
@@ -114,7 +119,6 @@
 </head>
 <body>
     <div class="image-background">
-<a class="back-button" href="/"><img src="{{asset('photos/powrot.png')}}" alt="Back to Homepage" class="wymiar"></a>
     <div class="container">
     <div class="contact-info">
         <h2 class="typczcionka">Contact Us</h2>
