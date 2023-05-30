@@ -180,6 +180,7 @@ section p {
 /*czcionka*/
 .czcionka{
     color:black;
+    font-weight: 700;
 }
 
 .czcionka-biala{
@@ -255,19 +256,6 @@ footer p {
     border-bottom: 1px solid #333333;
     padding-bottom: 20px;
 }
-
-/* .image-background {
-        height: 100vh;
-        width: 100%;
-        position: relative;
-        display: flex;
-        align-items: flex-end;
-        background-image: url("{{asset('photos/cegla.jpg')}}");
-        background-size: cover;
-        background-position: center;
-        padding: 0;
-    } */
-
     body, html {
         height: 100%;
     }
@@ -283,6 +271,10 @@ footer p {
         background-size: cover;
     }
 
+    .my-form{
+        border: 3px solid black;
+        border-radius: 15px;
+    }
     </style>
 </head>
 <body>
@@ -320,7 +312,7 @@ footer p {
     <div class="flex-container">
       <img src="{{asset('photos/kadra.jpg')}}" alt="Lights" class="wymiar-kadra typczcionka">
       <div class="text-container">
-    <p class="text-justify typczcionka">We are a team of experienced plastic surgeons ready to provide you with a comprehensive range of plastic surgery services. 
+    <p class="text-justify typczcionka czcionka">We are a team of experienced plastic surgeons ready to provide you with a comprehensive range of plastic surgery services. 
         Our plastic surgery clinic is equipped with state-of-the-art medical equipment, and our specialists have extensive experience and deep knowledge in their field. 
         We understand the importance of your trust and sense of security during plastic surgery procedures. Therefore, we prioritize an individual approach to each patient, 
         carefully listening to your needs and expectations. Our priority is to ensure the highest quality of medical care and achieve the best possible results. 
@@ -337,7 +329,7 @@ footer p {
 
 <h2 class=" typczcionka opinia">OPINIONS</h2>
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-4 my-form">
     <div class="thumbnail">
         <img src="{{asset('photos/1.jpg')}}" alt="Lights" class="wymiar">
         <div class="caption">
@@ -352,7 +344,7 @@ footer p {
         </div>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-4 my-form">
     <div class="thumbnail">
         <img src="{{asset('photos/2.jpg')}}" alt="Lights" class="wymiar">
         <div class="caption">
@@ -367,7 +359,7 @@ footer p {
         </div>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-4 my-form">
     <div class="thumbnail">
         <img src="{{asset('photos/3.jpg')}}" alt="Lights" class="wymiar">
         <div class="caption">
@@ -384,7 +376,7 @@ footer p {
   </div>
 </div>
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-4 my-form">
     <div class="thumbnail">
         <img src="{{asset('photos/4.jpg')}}" alt="Lights" class="wymiar">
         <div class="caption">
@@ -399,7 +391,7 @@ footer p {
         </div>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-4 my-form">
     <div class="thumbnail">
         <img src="{{asset('photos/5.jpg')}}" alt="Lights" class="wymiar">
         <div class="caption">
@@ -414,7 +406,7 @@ footer p {
         </div>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-4 my-form">
     <div class="thumbnail">
         <img src="{{asset('photos/6.jpg')}}" alt="Lights" class="wymiar">
         <div class="caption">
