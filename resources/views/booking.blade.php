@@ -126,15 +126,10 @@
 
             <label for="service" class="typczcionka">Select a Service</label>
             <select id="service" name="service" class="typczcionka">
-                @foreach ($bookings->unique('surgery_id') as $booking)
-                    @php
-                        $surgery = $booking->surgery;
-                    @endphp
-                    @if ($surgery)
-                        <option value="{{ $booking->id }}">
-                            {{ $surgery->name }} - {{ $surgery->price }}$
-                        </option>
-                    @endif
+                @foreach ($services as $service)
+                    <option value="{{ $service->id }}">
+                        {{ $service->name }} - {{ $service->price }}$
+                    </option>
                 @endforeach
             </select>
 

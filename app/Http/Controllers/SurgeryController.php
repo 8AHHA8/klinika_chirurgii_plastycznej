@@ -13,11 +13,16 @@ class SurgeryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $services = Surgery::all();
+    // public function index()
+    // {
+    //     $services = Surgery::all();
 
-        return View::make('services')->with('services', $services);
+    //     return View::make('services')->with('services', $services);
+    // }
+
+    public function index(){
+
+        return view('services', ['services'=>Surgery::all()]);
     }
 
     /**

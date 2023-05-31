@@ -27,6 +27,7 @@ class TransactionController extends Controller
         return View::make('booking')->with([
             'bookings' => $bookings,
             'dates' => $dates,
+            'services'=>Surgery::all()
         ]);
     }
 
