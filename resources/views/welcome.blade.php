@@ -6,6 +6,7 @@
     <title>Przychodnia Chirurgii Plastycznej</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script>
         window.addEventListener('DOMContentLoaded', (event) => {
             const images = document.querySelectorAll('.wymiar');
@@ -43,9 +44,6 @@
     padding: 0;
 }
 
-/* Dodatkowe style strony */
-
-/* Nagłówek */
 header {
     background-color: #f2f2f2;
     padding: 20px;
@@ -157,11 +155,6 @@ section p {
     margin: 10px;
     transition: 700ms ease;
 }
-
-/* .wymiar:hover {
-    width: 22rem;
-    border-radius: 25px;
-} */
 
 .wymiar-text {
     font-size: 1rem;
@@ -275,31 +268,88 @@ footer p {
         border: 3px solid black;
         border-radius: 15px;
     }
+
+    .moveup {
+            transform: translateY(-5rem);
+        }
+
+    .rozmiar{
+        height: 6rem;
+    }
+    
+
     </style>
 </head>
 <body>
 <div class="parallax"> 
-    <header>
+    <header class="rozmiar">
 
         <h1 class="typczcionka">PLASTIC SURGERY CLINIC FACILITY</h1>
         <p class="odstep wielkosc typczcionka">YOU CAN CHANGE YOURSELF WITH US</p>
-        <div class="login-option">
-        <?php
-        // Sprawdzanie statusu logowania użytkownika
-        $isUserLoggedIn = false; // Zmienna określająca, czy użytkownik jest zalogowany (wartość logiczna true/false)
-        
-        if ($isUserLoggedIn) {
-            echo '<a href="/logout" class="typczcionka">Log out</a>';
-        } else {
-            echo '<a href="/login" class="typczcionka">Login</a>';
-        }
-        ?>
-    </div>
-    </header>
 
+        <!-- Settings Dropdown -->
+        <div class="hidden sm:flex sm:items-center sm:ml-6 d-flex justify-content-end moveup">
+                    @if (Auth::check())
+                    <x-dropdown align="right" width="48">
+                        <x-slot name="trigger">
+                            <button class="inline-flex items-center px-3 py-2 border-transparent text-sm leading-4 font-medium rounded-md dark:text-gray-500 dark:text-gray-400 bg-gray-200 dark:bg-gray-100 hover:text-gray-700 dark:hover:text-gray-300 dark:hover:text-decoration-none focus:outline-none transition ease-in-out duration-150">
+                                <div>{{ Auth::user()->name }}</div>
+
+                                <div class="ml-1">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                            </button>
+                        </x-slot>
+
+                        <x-slot name="content">
+                            <x-dropdown-link class="no-underline" :href="route('profile.edit')">
+                                {{ __('Profile') }}
+                            </x-dropdown-link>
+
+                            <!-- Authentication -->
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <x-dropdown-link class="no-underline" :href="route('logout')"
+                                        onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                                    {{ __('Log Out') }}
+                                </x-dropdown-link>
+                            </form>
+                        </x-slot>
+                    </x-dropdown>
+                    @else
+                        <x-dropdown align="right" width="48">
+                            <x-slot name="trigger">
+                                <button class="typczcionka inline-flex items-center px-3 py-2 border-transparent text-sm leading-4 font-medium rounded-md text-gray-800 dark:text-gray-400 bg-gray-100 dark:bg-gray-100 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                                    <div>Profile</div>
+
+                                    <div class="ml-1">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <x-dropdown-link :href="route('login')">
+                                    {{ __('Login') }}
+                                </x-dropdown-link>
+
+
+                                    <x-dropdown-link :href="route('register')">
+                                        {{ __('Registration') }}
+                                    </x-dropdown-link>
+
+                            </x-slot>
+                        </x-dropdown>
+                    @endif
+                </div>
+    </header>
     <nav>
         <ul>
-            <li><a href="/registration" class="typczcionka">PATIENT REGISTRATION</a></li>
             <li><a href="/doctors" class="typczcionka">OUR TEAM</a></li>
             <li><a href="/services" class="typczcionka" >SERVICES</a></li>
             <li><a href="/booking"class="typczcionka">BOOKING</a></li>

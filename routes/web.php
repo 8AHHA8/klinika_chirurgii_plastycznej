@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DoctorsController;
 use App\Http\Controllers\SurgeryController;
 use App\Http\Controllers\TransactionController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +17,20 @@ use App\Http\Controllers\TransactionController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,14 +47,4 @@ Route::get('/services', [SurgeryController::class, 'index'])->name('surgery');
 Route::get('/booking', [TransactionController::class, 'index'])->name('booking');
 Route::get('/disabled-dates', [TransactionController::class, 'getDisabledDates']);
 
-// Trasa do formularza logowania
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
-
-// Trasa do formularza rejestracji
-Route::get('/registration', [AuthController::class, 'showRegistrationForm'])->name('registration');
-Route::post('/registration', [AuthController::class, 'registration']);
-
-// Trasa do wylogowywania użytkownika
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
+require __DIR__.'/auth.php';

@@ -32,13 +32,13 @@ class TransactionController extends Controller
     }
 
     public function getDisabledDates()
-{
-    $dates = Transaction::all()->pluck('date')->map(function($date){
-        return \Carbon\Carbon::parse($date)->format('Y-m-d');
-    })->toArray();
+    {
+        $dates = Transaction::all()->pluck('date')->map(function($date){
+            return \Carbon\Carbon::parse($date)->format('Y-m-d');
+        })->toArray();
 
-    return response()->json($dates);
-}
+        return response()->json($dates);
+    }
 
     /**
      * Show the form for creating a new resource.

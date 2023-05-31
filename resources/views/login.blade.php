@@ -116,7 +116,7 @@ font-family: Arial, Helvetica, sans-serif;
 
             @error('e-mail')
                 <div class="alert alert-danger typczcionka">
-                    {{ $message }}
+                    <p>Wrong e-mail or password</p>
                 </div>
             @enderror
         </form>

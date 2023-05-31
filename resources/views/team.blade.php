@@ -104,7 +104,7 @@
 <body>
 <div class="image-background">
     <div class="container movedown">
-        <h1>Meet Our Doctors</h1>
+        <h1 class="typczcionka">Meet Our Doctors</h1>
 
         @foreach ($doctors as $doctor)
     <div class="doctor">
@@ -116,7 +116,6 @@
         </div>
     </div>
         @endforeach
-
     </div>
 </div>
 </body>
