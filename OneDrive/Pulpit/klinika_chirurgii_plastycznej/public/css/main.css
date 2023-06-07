@@ -1,0 +1,241 @@
+
+/* Resetowanie stylów */
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+header {
+background-color: #f2f2f2;
+padding: 20px;
+text-align: center;
+}
+
+h1 {
+font-size: 24px;
+font-weight: 600;
+color: #333333;
+margin-bottom: 10px;
+}
+
+h1:hover {
+font-size: 24.2px;
+font-weight: 600;
+color: #333333;
+margin-bottom: 10px;
+letter-spacing: 0.5px;
+transition: 700ms ease;
+}
+
+p {
+font-size: 16px;
+color: #666666;
+margin-bottom: 20px;
+}
+
+p:hover {
+color: #666666;
+margin-bottom: 20px;
+transition: 700ms ease;
+}
+
+.odstep:hover{
+letter-spacing: 0.5px;
+font-size: 14px;
+}
+
+.wielkosc{
+font-size: 12px;
+}
+
+/* Menu nawigacyjne */
+nav {
+background-color: #333333;
+padding: 20px 20px;
+}
+
+nav ul {
+list-style: none;
+text-align: center;
+display: flex;
+justify-content: space-between;
+}
+
+nav ul li {
+display: inline-block;
+margin-right: 20px;
+margin-left: 20px;
+}
+
+nav ul li a {
+color: #ffffff;
+font-size: 20px;
+font-weight: 400;
+font-family: 'Gambetta', serif;
+transition: 200MS;
+}
+
+nav ul li a:hover {
+font-size:calc(20.3px);
+text-transform: uppercase;
+font-family:  Arial, Helvetica, sans-serif;
+letter-spacing: 0.8px;
+transition: 700ms ease;
+font-variation-settings: "wght" 311;
+margin-bottom: 0.8rem;
+color: PaleGoldenRod;
+outline: none;
+text-decoration: none;
+text-align: center;
+}
+
+/* Sekcje strony */
+section {
+padding: 40px 20px;
+}
+
+section h2 {
+font-size: 20px;
+font-weight: 600;
+color: #333333;
+margin-bottom: 20px;
+}
+
+section p {
+font-size: 16px;
+color: #666666;
+margin-bottom: 20px;
+}
+
+
+/* Zdjęcia */
+.wymiar {
+width: 20rem;
+object-fit: cover;
+border-radius: 25px;
+margin: 10px;
+transition: 700ms ease;
+}
+
+.wymiar-text {
+font-size: 1rem;
+transition: font-size 700ms ease;
+overflow-wrap: break-word; /* lub word-wrap: break-word; */
+max-width: 600px;
+padding-left: 30px; /* Adjust the value as per your preference */
+text-align: justify;
+}
+
+.thumbnail:hover .wymiar-text {
+outline: none;
+text-decoration: none;
+}
+
+/*czcionka*/
+.czcionka{
+color:black;
+font-weight: 700;
+}
+
+.czcionka-biala{
+color:white;
+}
+
+/* Stopka */
+footer {
+background-color: #f2f2f2;
+padding: 20px;
+text-align: center;
+}
+
+footer p {
+font-size: 14px;
+color: #666666;
+}
+
+.text-justify {
+text-align: justify;
+margin-right: 5rem; /* Możesz dostosować wartość odstępu według preferencji */
+margin-top: 1.5rem;
+}
+
+.flex-container {
+display: flex;
+align-items: flex-start;
+}
+
+.text-container {
+margin-left: 20px; /* Możesz dostosować margines według preferencji */
+}
+
+.wymiar-kadra {
+width: 22rem;
+object-fit: cover;
+border-radius: 25px;
+margin: 10px;
+transition: 700ms ease;
+}
+
+.wymiar-kadra:hover {
+width: 22.1rem;
+object-fit: cover;
+border-radius: 25px;
+margin: 10px;
+transition: 700ms ease;
+}
+/* Dodatkowe style dla opcji logowania */
+.login-option {
+position: absolute;
+top: 20px;
+right: 20px;
+font-size: 16px;
+}
+
+.login-option:hover {
+transition: 700ms ease;
+font-size: 18px;
+}
+
+.login-option a {
+color: #333333;
+text-decoration: none;
+}
+
+.typczcionka{
+font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Dodatkowe style dla linii granicznej */
+.opinia {
+border-bottom: 1px solid #333333;
+padding-bottom: 20px;
+}
+body, html {
+height: 100%;
+}
+
+.parallax {
+/* The image used */
+background-image: url("{{asset('photos/cegla.jpg')}}");
+
+/* Create the parallax scrolling effect */
+background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+.my-form{
+border: 3px solid black;
+border-radius: 15px;
+}
+
+.moveup {
+    transform: translateY(-5rem);
+}
+
+.rozmiar{
+height: 6rem;
+}
+
