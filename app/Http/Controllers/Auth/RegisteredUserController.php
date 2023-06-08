@@ -16,7 +16,27 @@ use Illuminate\View\View;
 class RegisteredUserController extends Controller
 {
     /**
+     * Register a new user.
+     *
+     * @param  array  $data
+     * @return \App\Models\User
+     */
+    protected function register(array $data)
+    {
+        return User::create([
+            'name' => $data['name'],
+            'surname' => $data['surname'],
+            'phone_number' => $data['phone_number'],
+            'pesel' => $data['pesel'],
+            'e-mail' => $data['e-mail'],
+            'password' => Hash::make($data['password']),
+        ]);
+    }
+
+    /**
      * Display the registration view.
+     *
+     * @return \Illuminate\View\View
      */
     public function create(): View
     {
@@ -24,20 +44,26 @@ class RegisteredUserController extends Controller
     }
 
     /**
-     * Handle an incoming registration request.
+     * Handle a registration request for the application.
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'e-mail' => ['required', 'string', 'e-mail', 'max:255', 'unique:'.User::class],
+            'surname' => ['required', 'string', 'max:255'],
+            'phone_number' => ['required', 'integer'],
+            'pesel' => ['required', 'string', 'size:11'],
+            'e-mail' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $user = User::create(
-            $request->all());
+        $data = $request->all();
+        $data['role'] = 2; // Przyznaj rolę automatycznie wartością 2
+
+        $user = $this->register($data);
 
         event(new Registered($user));
 

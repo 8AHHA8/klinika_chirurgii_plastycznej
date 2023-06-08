@@ -23,7 +23,6 @@ class User extends Authenticatable
     ];
 
     protected $attributes = [
-        'wait_time' => 0,
         'role' => 2,
     ];
 }

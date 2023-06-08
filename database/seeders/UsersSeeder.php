@@ -31,13 +31,53 @@ class UsersSeeder extends Seeder
 
         DB::table('users')->insert([
             [
+                'name' => 'Klaus',
+                'surname' => 'Lindecker',
+                'phone_number' => '19391945',
+                'pesel' => '12345678903',
+                'e-mail' => 'klaus@example.com',
+                'password' => Hash::make('sonnenblume'),
+                'role' => '1'
+            ],
+
+            [
+                'name' => 'Zofia',
+                'surname' => 'Ratajkowska',
+                'phone_number' => '986532664',
+                'pesel' => '12345678907',
+                'e-mail' => 'zofia@example.com',
+                'password' => Hash::make('sonnenblume'),
+                'role' => '1'
+            ],
+
+            [
+                'name' => 'Zbigniew',
+                'surname' => 'Dąbrowski',
+                'phone_number' => '113789965',
+                'pesel' => '12345678909',
+                'e-mail' => 'zbigniew@example.com',
+                'password' => Hash::make('sonnenblume'),
+                'role' => '1'
+            ],
+
+            [
+                'name' => 'Anna',
+                'surname' => 'Lazarowicz',
+                'phone_number' => '434256765',
+                'pesel' => '12345678905',
+                'e-mail' => 'anna@example.com',
+                'password' => Hash::make('sonnenblume'),
+                'role' => '1'
+            ],
+
+
+            [
                 'name' => 'John',
                 'surname' => 'Doe',
                 'phone_number' => '123456789',
                 'pesel' => '12345678900',
                 'e-mail' => 'john@example.com',
                 'password' => Hash::make('apple'),
-                'wait_time' => '2',
                 'role' => '2',
             ],
             
@@ -48,7 +88,6 @@ class UsersSeeder extends Seeder
                 'pesel' => '23456789010',
                 'e-mail' => 'jane@example.com',
                 'password' => Hash::make('banana'),
-                'wait_time' => '3',
                 'role' => '2',
             ],
             
@@ -59,7 +98,6 @@ class UsersSeeder extends Seeder
                 'pesel' => '34567890123',
                 'e-mail' => 'mike@example.com',
                 'password' => Hash::make('orange'),
-                'wait_time' => '1',
                 'role' => '2',
             ],
             
@@ -70,7 +108,6 @@ class UsersSeeder extends Seeder
                 'pesel' => '45678901234',
                 'e-mail' => 'sarah@example.com',
                 'password' => Hash::make('strawberry'),
-                'wait_time' => '4',
                 'role' => '2',
             ],
             
@@ -81,7 +118,6 @@ class UsersSeeder extends Seeder
                 'pesel' => '56789012345',
                 'e-mail' => 'michael@example.com',
                 'password' => Hash::make('mango'),
-                'wait_time' => '5',
                 'role' => '2',
             ],
             
@@ -92,7 +128,6 @@ class UsersSeeder extends Seeder
                 'pesel' => '67890123456',
                 'e-mail' => 'emily@example.com',
                 'password' => Hash::make('pineapple'),
-                'wait_time' => '3',
                 'role' => '2',
             ],
             
@@ -103,7 +138,6 @@ class UsersSeeder extends Seeder
                 'pesel' => '78901234567',
                 'e-mail' => 'david@example.com',
                 'password' => Hash::make('watermelon'),
-                'wait_time' => '1',
                 'role' => '2',
             ],
             
@@ -114,7 +148,6 @@ class UsersSeeder extends Seeder
                 'pesel' => '89012345678',
                 'e-mail' => 'olivia@example.com',
                 'password' => Hash::make('grapefruit'),
-                'wait_time' => '2',
                 'role' => '2',
             ],
             
@@ -125,9 +158,9 @@ class UsersSeeder extends Seeder
                 'pesel' => '90123456789',
                 'e-mail' => 'daniel@example.com',
                 'password' => Hash::make('blueberry'),
-                'wait_time' => '6',
                 'role' => '2'
-        ]]);
+            ],
+
+            ]);
     }
 }
-

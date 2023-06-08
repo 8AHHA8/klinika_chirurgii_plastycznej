@@ -253,17 +253,6 @@ footer p {
         height: 100%;
     }
 
-    .parallax {
-        /* The image used */
-        background-image: url("{{asset('photos/cegla.jpg')}}");
-
-        /* Create the parallax scrolling effect */
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
     .my-form{
         border: 3px solid black;
         border-radius: 15px;
@@ -281,7 +270,6 @@ footer p {
     </style>
 </head>
 <body>
-<div class="parallax"> 
     <header class="rozmiar">
 
         <h1 class="typczcionka">PLASTIC SURGERY CLINIC FACILITY</h1>
@@ -353,7 +341,6 @@ footer p {
             <li><a href="/doctors" class="typczcionka">OUR TEAM</a></li>
             <li><a href="/services" class="typczcionka" >SERVICES</a></li>
             <li><a href="/booking"class="typczcionka">BOOKING</a></li>
-            <li><a href="/contact" class="typczcionka">CONTACT</a></li>
         </ul>
     </nav>
 
@@ -384,12 +371,12 @@ footer p {
         <img src="{{asset('photos/1.jpg')}}" alt="Lights" class="wymiar">
         <div class="caption">
           <p class="wymiar-text czcionka typczcionka">
-            Name: Mateusz <br>
-            Gender: Male <br>
-            Weight: 65 kg <br>
-            Date of surgery: 02.12.2019 <br>
-            Surgery: Face Reconstruction <br>
-            Opinion: The plastic surgery clinic successfully transformed my face through reconstruction surgery, boosting my confidence and leaving me extremely satisfied with the results.
+            <b>Name:</b> Mateusz <br>
+            <b>Gender:</b> Male <br>
+            <b> Weight:</b> 65 kg <br>
+            <b>Date of surgery:</b> 02.12.2019 <br>
+            <b> Surgery:</b> Face Reconstruction <br>
+            <b> Opinion:</b> The plastic surgery clinic successfully transformed my face through reconstruction surgery, boosting my confidence and leaving me extremely satisfied with the results.
           </p>
         </div>
     </div>
@@ -399,12 +386,12 @@ footer p {
         <img src="{{asset('photos/2.jpg')}}" alt="Lights" class="wymiar">
         <div class="caption">
         <p class="wymiar-text czcionka typczcionka ">
-            Name: Kacper <br>
-            Gender: Male <br>
-            Weight: 73 kg <br>
-            Date of surgery: 21.09.2021 <br>
-            Surgery: Suction <br>
-            Opinion: The plastic surgery clinic's suction surgery exceeded my expectations, delivering outstanding results and leaving me highly satisfied with the procedure.
+            <b>Name:</b> Kacper <br>
+            <b>Gender:</b> Male <br>
+            <b>Weight:</b> 73 kg <br>
+            <b>Date of surgery:</b> 21.09.2021 <br>
+            <b>Surgery:</b> Suction <br>
+            <b>Opinion:</b> The plastic surgery clinic's suction surgery exceeded my expectations, delivering outstanding results and leaving me highly satisfied with the procedure.
           </p>
         </div>
     </div>
@@ -414,12 +401,12 @@ footer p {
         <img src="{{asset('photos/3.jpg')}}" alt="Lights" class="wymiar">
         <div class="caption">
         <p class="wymiar-text czcionka typczcionka">
-            Name: Oliwia <br>
-            Gender: Female <br>
-            Weight: 57 kg <br>
-            Date of surgery: 15.03.2020 <br>
-            Surgery: Rhinoplasty <br>
-            Opinion: The plastic surgery clinic's Rhinoplasty surgery exceeded my expectations, delivering remarkable results and enhancing my overall facial harmony and confidence.
+            <b>Name:</b> Oliwia <br>
+            <b>Gender:</b> Female <br>
+            <b>Weight:</b> 57 kg <br>
+            <b>Date of surgery:</b> 15.03.2020 <br>
+            <b>Surgery:</b> Rhinoplasty <br>
+            <b>Opinion:</b> The plastic surgery clinic's Rhinoplasty surgery exceeded my expectations, delivering remarkable results and enhancing my overall facial harmony and confidence.
           </p>
         </div>
     </div>
@@ -431,12 +418,12 @@ footer p {
         <img src="{{asset('photos/4.jpg')}}" alt="Lights" class="wymiar">
         <div class="caption">
         <p class="wymiar-text czcionka typczcionka">
-            Name: Monika <br>
-            Gender: Female <br>
-            Weight: 63 kg <br>
-            Date of surgery: 12.12.2019 <br>
-            Surgery: Skin transplant <br>
-            Opinion: This clinic's skin transplant after the fire incident in my house has been a life-changing procedure, restoring my appearance and giving me a new lease on life.
+            <b>Name:</b> Monika <br>
+            <b>Gender:</b> Female <br>
+            <b>Weight:</b> 63 kg <br>
+            <b>Date of surgery:</b> 12.12.2019 <br>
+            <b>Surgery:</b> Skin transplant <br>
+            <b>Opinion:</b> This clinic's skin transplant after the fire incident in my house has been a life-changing procedure, restoring my appearance and giving me a new lease on life.
           </p>
         </div>
     </div>
@@ -446,12 +433,12 @@ footer p {
         <img src="{{asset('photos/5.jpg')}}" alt="Lights" class="wymiar">
         <div class="caption">
         <p class="wymiar-text czcionka typczcionka">
-            Name: Mike <br>
-            Gender: Male <br>
-            Weight: 67 kg <br>
-            Date of surgery: 27.08.2022 <br>
-            Surgery: Hair Transplant <br>
-            Opinion: The plastic surgery clinic's hair transplant surgery has significantly enhanced my confidence by restoring a natural and fuller head of hair.
+            <b>Name:</b> Mike <br>
+            <b>Gender:</b> Male <br>
+            <b>Weight:</b> 67 kg <br>
+            <b>Date of surgery:</b> 27.08.2022 <br>
+            <b>Surgery:</b> Hair Transplant <br>
+            <b>Opinion:</b> The plastic surgery clinic's hair transplant surgery has significantly enhanced my confidence by restoring a natural and fuller head of hair.
           </p>
         </div>
     </div>
@@ -461,12 +448,12 @@ footer p {
         <img src="{{asset('photos/6.jpg')}}" alt="Lights" class="wymiar">
         <div class="caption">
         <p class="wymiar-text czcionka typczcionka">
-            Name: Barbara <br>
-            Gender: Female <br>
-            Weight: 63 kg <br>
-            Date of surgery: 02.06.2022 <br>
-            Surgery: Laser resurfacing <br>
-            Opinion: The plastic surgery clinic's laser resurfacing surgery has remarkably rejuvenated my skin, leaving it smoother and more youthful.
+            <b>Name:</b> Barbara <br>
+            <b>Gender:</b> Female <br>
+            <b>Weight:</b> 63 kg <br>
+            <b>Date of surgery:</b> 02.06.2022 <br>
+            <b>Surgery:</b> Laser resurfacing <br>
+            <b>Opinion:</b> The plastic surgery clinic's laser resurfacing surgery has remarkably rejuvenated my skin, leaving it smoother and more youthful.
           </p>
         </div>
     </div>
@@ -482,6 +469,5 @@ footer p {
     <p>&copy; 2023 Plastic Surgery Clinic Facility. All rights reserved.</p>
 </footer>
 
-</div>  
 </body>
 </html>

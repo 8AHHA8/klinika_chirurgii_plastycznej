@@ -19,7 +19,9 @@ class TransactionSeeder extends Seeder
         $surgeryIds = range(1, 24);
         $price = Surgery::all()->pluck('price')->toArray();
 
-        $userIds = User::all()->pluck('id')->toArray();
+        $userIds = User::whereNotIn('id', function ($query) {
+            $query->select('user_id')->from('doctors');
+        })->pluck('id')->toArray();
 
         foreach ($surgeryIds as $surgeryId) {
             $advancementLevel = ceil($surgeryId / 6); // obliczanie poziomu zaawansowania na podstawie id zabiegu

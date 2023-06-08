@@ -36,15 +36,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
-
 Route::get('/doctors', [DoctorsController::class, 'index'])->name('doctors');
 
 Route::get('/services', [SurgeryController::class, 'index'])->name('surgery');
 
 Route::get('/booking', [TransactionController::class, 'index'])->name('booking');
 Route::get('/disabled-dates', [TransactionController::class, 'getDisabledDates']);
+
 
 require __DIR__.'/auth.php';
