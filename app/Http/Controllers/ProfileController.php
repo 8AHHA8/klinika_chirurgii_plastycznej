@@ -11,6 +11,8 @@ use Illuminate\View\View;
 use Illuminate\Support\Facades\DB;
 use App\Models\Surgery;
 use App\Models\Transaction;
+use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class ProfileController extends Controller
 {
@@ -27,13 +29,25 @@ class ProfileController extends Controller
                 ->orderBy('transactions.id', 'asc')
                 ->get();
         
-            $sortedTransactions = $transactions->sortBy('date'); // Sortuj transakcje według daty rosnąco
+            $transactionCollection = new Collection($transactions);
+        
+            $sortedTransactions = $transactionCollection->sortByDesc('date');
+        
+            $perPage = 10;
+        
+            $paginatedTransactions = new LengthAwarePaginator(
+                $sortedTransactions->forPage($request->page, $perPage),
+                $sortedTransactions->count(),
+                $perPage,
+                $request->page,
+                ['path' => $request->url()]
+            );
         
             $surgeries = Surgery::all();
         
             return view('profile.edit_role1', [
                 'user' => $user,
-                'transactions' => $sortedTransactions,
+                'transactions' => $paginatedTransactions,
                 'surgeries' => $surgeries,
             ]);
         }elseif ($role === 2) {

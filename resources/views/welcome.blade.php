@@ -310,7 +310,7 @@ footer p {
                     @else
                         <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
-                                <button class="typczcionka inline-flex items-center px-3 py-2 border-transparent text-sm leading-4 font-medium rounded-md text-gray-800 dark:text-gray-400 bg-gray-100 dark:bg-gray-100 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                                <button class="typczcionka inline-flex items-center px-3 py-2 border-transparent text-sm leading-4 font-medium rounded-md text-gray-800 dark:text-gray-800 bg-gray-100 dark:bg-gray-100 hover:text-gray-700 dark:hover:text-gray-900 focus:outline-none transition ease-in-out duration-150">
                                     <div>Profile</div>
 
                                     <div class="ml-1">

@@ -12,7 +12,13 @@ class Transaction extends Model
     use HasFactory;
     
     public function surgery()
-{
-    return $this->belongsTo(Surgery::class);
-}
+    {
+        return $this->belongsTo(Surgery::class);
+    }
+
+    protected $fillable = [
+        'user',
+        'transactions',
+        'surgeries',
+    ];
 }

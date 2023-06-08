@@ -10,16 +10,6 @@ use Illuminate\Support\Facades\View;
 
 class SurgeryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    // public function index()
-    // {
-    //     $services = Surgery::all();
-
-    //     return View::make('services')->with('services', $services);
-    // }
-
     public function index(){
 
         return view('services', ['services'=>Surgery::all()]);
