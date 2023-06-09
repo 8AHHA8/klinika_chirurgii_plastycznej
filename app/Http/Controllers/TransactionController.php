@@ -9,6 +9,11 @@ use App\Http\Requests\UpdateTransactionRequest;
 use App\Models\Surgery;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use App\Models\Doctors;
+use App\Models\User;
 
 
 class TransactionController extends Controller
@@ -40,16 +45,7 @@ class TransactionController extends Controller
         return response()->json($dates);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        // Retrieve all occupied dates from transactions
-        $occupiedDates = Transaction::pluck('date')->toArray();
-
-        return View::make('create-booking')->with('occupiedDates', $occupiedDates);
-    }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -68,9 +64,6 @@ class TransactionController extends Controller
         return redirect()->route('booking.index')->with('success', 'Booking created successfully.');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Transaction $transaction)
     {
         // Retrieve all occupied dates from transactions
@@ -107,4 +100,54 @@ class TransactionController extends Controller
 
         return redirect()->route('booking.index')->with('success', 'Booking deleted successfully.');
     }
+
+    public function booking(Request $request)
+    {
+        // Walidacja danych wejściowych
+        $request->validate([
+            'e-mail' => 'required|email',
+            'phone_number' => 'required',
+            'service' => 'required',
+            'date' => 'required',
+        ]);
+
+        // Pobranie ID użytkownika na podstawie adresu e-mail i hasła
+        $email = $request->input('e-mail');
+        $phone_number = $request->input('phone_number');
+        $userId = DB::table('users')
+            ->where('e-mail', $email)
+            ->where('phone_number', $phone_number)
+            ->value('id');
+        
+        // dd($email, $phone_number, $userId);
+
+        if (!$userId) {
+            return redirect()->back()->with('error', 'Invalid credentials.');
+        }
+
+        // Utworzenie nowej rezerwacji
+        $transaction = new Transaction();
+        // $transaction->email = $email;
+        // $transaction->phone_number = $phone_number;
+        $transaction->date = $request->input('date');
+
+        // Pobranie danych zabiegu na podstawie nazwy
+        $serviceId = $request->input('service');
+        $surgery = Surgery::find($serviceId);
+
+        // Uzupełnienie danych rezerwacji
+        // $transaction->name = $surgery ? $surgery->name : 'do ustalenia';
+        $transaction->price = $surgery ? $surgery->price : 'do ustalenia';
+        $transaction->surgery_id = $surgery ? $surgery->id : null;
+        $transaction->doctor_id = 1;
+        $transaction->user_id = $userId;
+
+        $transaction->save();
+
+        return redirect()->route('welcome')->with('success', 'Booking created successfully.');
+
+    }
+
+
+
 }

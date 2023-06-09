@@ -20,7 +20,7 @@ use App\Http\Controllers\TransactionController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -32,15 +32,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/doctors', [DoctorsController::class, 'index'])->name('doctors');
 
 Route::get('/services', [SurgeryController::class, 'index'])->name('surgery');
 
 Route::get('/booking', [TransactionController::class, 'index'])->name('booking');
+Route::post('/booking', [TransactionController::class, 'booking'])->name('booking');
+
 Route::get('/disabled-dates', [TransactionController::class, 'getDisabledDates']);
 
 

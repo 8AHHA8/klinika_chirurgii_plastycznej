@@ -32,7 +32,7 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
-
+    
     /**
      * Display the registration view.
      *

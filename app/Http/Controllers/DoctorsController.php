@@ -13,11 +13,11 @@ class DoctorsController extends Controller
      */
     public function index()
     {
-    // Pobierz wszystkich doktorów
-    $doctors = Doctors::all();
+        // Pobierz wszystkich doktorów
+        $doctors = Doctors::all();
 
-    // Przekazanie danych do widoku
-    return View::make('team')->with('doctors', $doctors);
+        // Przekazanie danych do widoku
+        return view('team')->with('doctors', $doctors);
     }
 
     /**

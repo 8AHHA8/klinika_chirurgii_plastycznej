@@ -25,12 +25,12 @@ class ProfileController extends Controller
             $transactions = DB::table('transactions')
                 ->join('users', 'transactions.user_id', '=', 'users.id')
                 ->join('surgeries', 'transactions.surgery_id', '=', 'surgeries.id')
-                ->select('transactions.date', 'transactions.price', 'surgeries.name AS surgery_name', 'users.name', 'users.surname', 'users.phone_number', 'users.e-mail As email', 'users.pesel')
+                ->join('doctors', 'transactions.doctor_id', '=', 'doctors.id')
+                ->select('transactions.doctor_id', 'transactions.date', 'transactions.price', 'surgeries.name AS surgery_name', 'users.name', 'users.surname', 'users.phone_number', 'users.e-mail As email', 'users.pesel')
                 ->orderBy('transactions.id', 'asc')
                 ->get();
         
             $transactionCollection = new Collection($transactions);
-        
             $sortedTransactions = $transactionCollection->sortByDesc('date');
         
             $perPage = 10;
