@@ -16,7 +16,7 @@ return new class extends Migration
             $table->date('date');
             $table->integer('price');
             $table->foreignId('surgery_id')->constrained('surgeries');
-            $table->foreignId('doctor_id')->nullable('doctors')->constrained('doctors');
+            $table->foreignId('doctor_id')->nullable()->constrained('doctors');
             $table->foreignId('user_id')->constrained('users');
             $table->rememberToken();
             $table->timestamps();

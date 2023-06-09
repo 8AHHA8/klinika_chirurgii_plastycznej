@@ -120,17 +120,32 @@ class TransactionController extends Controller
             ->where('e-mail', $email)
             ->where('phone_number', $phone_number)
             ->value('id');
-        
-        // dd($email, $phone_number, $userId);
 
+        // Sprawdzenie liczby nieudanych prób logowania
+        $failedAttempts = session('failed_attempts', 0);
+        
         if (Auth::check() && Auth::user()->id !== $userId) {
+            $failedAttempts++;
+            
+            if ($failedAttempts >= 3) {
+                // Wylogowanie użytkownika
+                Auth::logout();
+                session()->forget('failed_attempts');
+
+                return redirect()->back()->with('robber', 'Too many failed attempts. You have been logged out.');
+            }
+
+            // Zapisanie liczby nieudanych prób logowania w sesji
+            session(['failed_attempts' => $failedAttempts]);
+
             return redirect()->back()->with('error', 'Wrong e-mail or phone number');
         }
 
+        // Resetowanie liczby nieudanych prób logowania
+        session()->forget('failed_attempts');
+
         // Utworzenie nowej rezerwacji
         $transaction = new Transaction();
-        // $transaction->email = $email;
-        // $transaction->phone_number = $phone_number;
         $transaction->date = $request->input('date');
 
         // Pobranie danych zabiegu na podstawie nazwy
@@ -138,18 +153,14 @@ class TransactionController extends Controller
         $surgery = Surgery::find($serviceId);
 
         // Uzupełnienie danych rezerwacji
-        // $transaction->name = $surgery ? $surgery->name : 'do ustalenia';
         $transaction->price = $surgery ? $surgery->price : 'do ustalenia';
         $transaction->surgery_id = $surgery ? $surgery->id : null;
-        $transaction->doctor_id = 1;
+        $transaction->doctor_id = null;
         $transaction->user_id = $userId;
 
         $transaction->save();
 
         return redirect()->route('welcome')->with('success', 'Booking created successfully.');
-
     }
-
-
 
 }

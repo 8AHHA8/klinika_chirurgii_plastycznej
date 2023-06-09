@@ -22,24 +22,23 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/booking', [TransactionController::class, 'index'])->name('booking');
+    Route::post('/booking', [TransactionController::class, 'booking'])->name('booking');
 });
 
 Route::get('/doctors', [DoctorsController::class, 'index'])->name('doctors');
 
 Route::get('/services', [SurgeryController::class, 'index'])->name('surgery');
 
-Route::get('/booking', [TransactionController::class, 'index'])->name('booking');
-Route::post('/booking', [TransactionController::class, 'booking'])->name('booking');
-
 Route::get('/disabled-dates', [TransactionController::class, 'getDisabledDates']);
-
 
 require __DIR__.'/auth.php';

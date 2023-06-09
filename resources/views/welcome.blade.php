@@ -274,7 +274,7 @@ footer p {
 
         <h1 class="typczcionka">PLASTIC SURGERY CLINIC FACILITY</h1>
         <p class="odstep wielkosc typczcionka">YOU CAN CHANGE YOURSELF WITH US</p>
-
+        
         <!-- Settings Dropdown -->
         <div class="hidden sm:flex sm:items-center sm:ml-6 d-flex justify-content-end moveup">
                     @if (Auth::check())
@@ -335,6 +335,10 @@ footer p {
                         </x-dropdown>
                     @endif
                 </div>
+
+                @if (session('robber'))
+                    <div class="error-message">{{ session('robber') }}</div>
+                @endif
     </header>
     <nav>
         <ul>
