@@ -34,13 +34,11 @@
 
             <button type="submit">Book Service</button>
 
-            @if ($errors -> any())
-                @foreach ($errors->all() as $error)
-                    <div>{{ $error }}</div>
-                @endforeach
+            @if (session('error'))
+                <div class="error-message">{{ session('error') }}</div>
             @endif
-
         </form>
+
     </div>
 </div>
 

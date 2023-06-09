@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use App\Models\Doctors;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class TransactionController extends Controller
@@ -121,8 +123,8 @@ class TransactionController extends Controller
         
         // dd($email, $phone_number, $userId);
 
-        if (!$userId) {
-            return redirect()->back()->with('error', 'Invalid credentials.');
+        if (Auth::check() && Auth::user()->id !== $userId) {
+            return redirect()->back()->with('error', 'Wrong e-mail or phone number');
         }
 
         // Utworzenie nowej rezerwacji
