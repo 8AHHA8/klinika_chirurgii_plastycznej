@@ -49,8 +49,10 @@
     .then(disabledDates => {
         flatpickr("#datepicker", {
             disable: disabledDates,
+            minDate: "today", // Blokuj daty z przeszłości
         });
     });
 </script>
+
 </body>
 </html>

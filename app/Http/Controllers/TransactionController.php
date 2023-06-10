@@ -110,7 +110,7 @@ class TransactionController extends Controller
             'e-mail' => 'required|email',
             'phone_number' => 'required',
             'service' => 'required',
-            'date' => 'required',
+            'date' => 'required|date',
         ]);
 
         // Pobranie ID użytkownika na podstawie adresu e-mail i hasła
@@ -152,9 +152,35 @@ class TransactionController extends Controller
         $serviceId = $request->input('service');
         $surgery = Surgery::find($serviceId);
 
+        // Walidacja danych zabiegu
+        if (!$surgery) {
+            return redirect()->back()->with('error', 'Invalid service selected.');
+        }
+
+        // Sprawdzenie dostępności wybranej daty
+        $selectedDate = $transaction->date;
+
+        // Sprawdzenie czy wybrana data jest z przeszłości
+        if (\Carbon\Carbon::parse($selectedDate)->isPast() && !\Carbon\Carbon::parse($selectedDate)->isToday()) {
+            return redirect()->back()->with('error', 'Selected date cannot be in the past.');
+        }
+
+        $existingTransaction = Transaction::where('date', $selectedDate)->first();
+
+        if ($existingTransaction) {
+            return redirect()->back()->with('error', 'Selected date is already booked.');
+        }
+
+        // Walidacja ceny zabiegu
+        $price = $surgery->price;
+
+        if (!is_numeric($price) || $price <= 0) {
+            return redirect()->back()->with('error', 'Invalid price for the selected service.');
+        }
+
         // Uzupełnienie danych rezerwacji
-        $transaction->price = $surgery ? $surgery->price : 'do ustalenia';
-        $transaction->surgery_id = $surgery ? $surgery->id : null;
+        $transaction->price = $price;
+        $transaction->surgery_id = $surgery->id;
         $transaction->doctor_id = null;
         $transaction->user_id = $userId;
 
@@ -162,5 +188,4 @@ class TransactionController extends Controller
 
         return redirect()->route('welcome')->with('success', 'Booking created successfully.');
     }
-
 }
