@@ -1,0 +1,192 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+
+p {
+    font-size: 16px;
+    color: #666666;
+    margin-bottom: 20px;
+}
+
+nav {
+    background-color: #333333;
+    padding: 20px 20px;
+}
+
+nav ul {
+    list-style: none;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 400;
+    
+    transition: 200MS;
+}
+
+nav ul li a:hover {
+    text-transform: uppercase;
+    
+    letter-spacing: 0.8px;
+    transition: 700ms ease;
+    font-variation-settings: "wght" 311;
+    margin-bottom: 0.8rem;
+    color: PaleGoldenRod;
+    outline: none;
+    text-decoration: none;
+    text-align: center;
+}
+
+section {
+    padding: 40px 20px;
+}
+
+section h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+section p {
+    font-size: 16px;
+    color: #666666;
+    margin-bottom: 20px;
+}
+
+
+/* Zdjęcia */
+.picsize {
+    width: 20rem;
+    object-fit: cover;
+    border-radius: 25px;
+    margin: 10px;
+    transition: 700ms ease;
+}
+
+.size-text {
+    font-size: 1rem;
+    transition: font-size 700ms ease;
+    overflow-wrap: break-word; /* lub word-wrap: break-word; */
+    max-width: 600px;
+    padding-left: 30px; /* Adjust the value as per your preference */
+    text-align: justify;
+}
+
+.thumbnail:hover .size-text {
+    outline: none;
+    text-decoration: none;
+}
+
+.fontblack{
+    color:black;
+    font-weight: 700;
+}
+
+footer {
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+}
+
+footer p {
+    font-size: 14px;
+    color: #666666;
+}
+
+.text-justify {
+    text-align: justify;
+    margin-right: 5rem; /* Możesz dostosować wartość odstępu według preferencji */
+    margin-top: 1.5rem;
+}
+
+.flex-container {
+    display: flex;
+    align-items: flex-start;
+}
+
+.text-container {
+    margin-left: 20px; /* Możesz dostosować margines według preferencji */
+}
+
+.size-team {
+    width: 22rem;
+    object-fit: cover;
+    border-radius: 25px;
+    margin: 10px;
+    transition: 700ms ease;
+}
+
+
+/* .image-background {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    background-image: url("/photos/background_hospital.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+} */
+
+
+
+
+
+.opinion {
+    border-bottom: 1px solid #333333;
+    padding-bottom: 20px;
+}
+    body, html {
+        height: 100%;
+    }
+
+    .centered {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+    .moveup {
+            transform: translateY(-3.5rem);
+        }
+
+    .doublefont{
+        font-size: 2rem;
+    }
+
+    .biggerfont{
+        font-size: 20px;
+    }
+
+
+
+    

@@ -16,9 +16,25 @@ class Transaction extends Model
         return $this->belongsTo(Surgery::class);
     }
 
+    public function doctor()
+    {
+        return $this->belongsTo(Doctor::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    
+
     protected $fillable = [
+        'id',
         'user',
         'transactions',
         'surgeries',
+        'date',
     ];
+
+    
 }

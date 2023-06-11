@@ -4,7 +4,7 @@
             {{ __('Welcome') }} {{ Auth::user()->name }}
         </h2>
     </x-slot>
-
+    
     <div class="py-12">
         <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
             <div class="overflow-x-auto">
@@ -13,6 +13,7 @@
                         <table class="min-w-full divide-y divide-gray-200">
                             <thead>
                                 <tr>
+                                    <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">ID</th>
                                     <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Doctor ID</th>
                                     <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Date</th>
                                     <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Price</th>
@@ -28,6 +29,7 @@
                             <tbody class="bg-white divide-y divide-gray-200">
                                 @foreach ($transactions as $transaction)
                                     <tr class="{{ $transaction->date < now() ? 'bg-blue-400 hover:bg-blue-500' : '' }} hover:bg-gray-100 {{ $transaction->date == now()->format('Y-m-d') ? 'bg-purple-600 hover:bg-purple-700' : '' }}">
+                                        <td class="px-6 py-4 whitespace-no-wrap">{{ $transaction->id }}</td>
                                         <td class="px-6 py-4 whitespace-no-wrap">{{ $transaction->doctor_id }}</td>
                                         <td class="px-6 py-4 whitespace-no-wrap">{{ $transaction->date }}</td>
                                         <td class="px-6 py-4 whitespace-no-wrap">{{ $transaction->price }}</td>
@@ -39,7 +41,11 @@
                                         <td class="px-6 py-4 whitespace-no-wrap">{{ $transaction->pesel }}</td>
                                         <td class="px-0 py-4 whitespace-no-wrap">
                                             <div class="flex justify-around">
-                                                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
+                                                <form method="POST" action="/transactionsDelete/{{$transaction->id}}">
+                                                    {{csrf_field()}}
+                                                    {{method_field('DELETE')}}
+                                                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
+                                                </form>
                                                 <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Edit</button>
                                                 <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Accept</button>
                                             </div>

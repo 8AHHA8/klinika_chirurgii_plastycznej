@@ -18,8 +18,8 @@ class DoctorsSeeder extends Seeder
         DB::table('doctors')->insert([
         [
             'image' => 'photos/klaus.jpg',
-            'speciality' => 'Cosmetic Surgeon',
-            'description' => 'Dr. Klaus Lindecker is a renowned cosmetic surgeon known for his exceptional skills in body contouring and aesthetic procedures. 
+            'speciality' => 'Plastic Surgeon',
+            'description' => 'Prof. Klaus Lindecker is a renowned cosmetic surgeon known for his exceptional skills in body contouring and aesthetic procedures. 
             He specializes in helping patients enhance their physical appearance and achieve their desired results through personalized care and innovative techniques.',
             'advancement_level' => '4',
             'user_id' => '1',
@@ -36,7 +36,7 @@ class DoctorsSeeder extends Seeder
         
         [
             'image' => 'photos/zbigniew.jpg',
-            'speciality' => 'Plastic Surgeon',
+            'speciality' => 'Cosmectic Surgeon',
             'description' => 'Dr. Zbigniew Dąbrowski is a skilled facial plastic surgeon with expertise in rhinoplasty and facelift procedures. 
             He is committed to providing personalized care and helping his patients achieve their aesthetic goals.',
             'advancement_level' => '2',
@@ -45,7 +45,7 @@ class DoctorsSeeder extends Seeder
         
         [
             'image' => 'photos/anna.jpg',
-            'speciality' => 'Plastic Surgeon',
+            'speciality' => 'Assistant Doctor',
             'description' => 'Dr. Anna Lazarowicz is a board-certified plastic surgeon specializing in reconstructive and aesthetic procedures. 
             She has a gentle and caring approach towards her patients and is dedicated to achieving natural-looking results.',
             'advancement_level' => '1',

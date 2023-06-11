@@ -12,7 +12,12 @@ class Surgery extends Model
     use HasFactory;
 
     public function bookings()
-{
-    return $this->hasMany(Transaction::class);
-}
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

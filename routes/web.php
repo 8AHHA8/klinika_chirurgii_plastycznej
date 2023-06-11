@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DoctorsController;
 use App\Http\Controllers\SurgeryController;
 use App\Http\Controllers\TransactionController;
+use App\Models\Transaction;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::delete('/transactionsDelete/{id}', function($id){
+        Transaction::destroy($id);
+        // return view('profile.edit_role1');
+        return view('welcome');
+    });
+
     Route::get('/booking', [TransactionController::class, 'index'])->name('booking');
     Route::post('/booking', [TransactionController::class, 'booking'])->name('booking');
 });
@@ -42,3 +49,5 @@ Route::get('/services', [SurgeryController::class, 'index'])->name('surgery');
 Route::get('/disabled-dates', [TransactionController::class, 'getDisabledDates']);
 
 require __DIR__.'/auth.php';
+
+

@@ -25,4 +25,14 @@ class User extends Authenticatable
     protected $attributes = [
         'role' => 2,
     ];
+
+    public function doctor()
+    {
+        return $this->hasOne(Doctor::class);
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

@@ -61,7 +61,7 @@ class RegisteredUserController extends Controller
         ]);
 
         $data = $request->all();
-        $data['role'] = 2; // Przyznaj rolę automatycznie wartością 2
+        $data['role'] = 2; // assign 2 role for new user
 
         $user = $this->register($data);
 

@@ -54,8 +54,8 @@ class TransactionController extends Controller
      */
     public function store(StoreTransactionRequest $request)
     {
-        // Create a new transaction
-        $transaction = new Transaction();
+        
+        $transaction = new Transaction(); // create a new transaction
         $transaction->surgery_id = $request->input('service');
         $transaction->doctor_id = $request->input('doctor');
         $transaction->user_id = auth()->user()->id;
@@ -68,8 +68,8 @@ class TransactionController extends Controller
 
     public function edit(Transaction $transaction)
     {
-        // Retrieve all occupied dates from transactions
-        $occupiedDates = Transaction::pluck('date')->toArray();
+       
+        $occupiedDates = Transaction::pluck('date')->toArray(); // retrieve all occupied dates from transactions
 
         return View::make('edit-booking')->with([
             'transaction' => $transaction,
@@ -97,71 +97,70 @@ class TransactionController extends Controller
      */
     public function destroy(Transaction $transaction)
     {
-        // Delete the transaction
-        $transaction->delete();
+        
+        $transaction->delete(); // delete the transaction
 
         return redirect()->route('booking.index')->with('success', 'Booking deleted successfully.');
     }
 
     public function booking(Request $request)
     {
-        // Walidacja danych wejściowych
-        $request->validate([
+        
+        $request->validate([ // validation
             'e-mail' => 'required|email',
             'phone_number' => 'required',
             'service' => 'required',
             'date' => 'required|date',
         ]);
 
-        // Pobranie ID użytkownika na podstawie adresu e-mail i hasła
-        $email = $request->input('e-mail');
+        
+        $email = $request->input('e-mail'); // get users id by his/hers mail and phone number
         $phone_number = $request->input('phone_number');
         $userId = DB::table('users')
             ->where('e-mail', $email)
             ->where('phone_number', $phone_number)
             ->value('id');
 
-        // Sprawdzenie liczby nieudanych prób logowania
-        $failedAttempts = session('failed_attempts', 0);
+        
+        $failedAttempts = session('failed_attempts', 0); // check how many times the user has failed to book a date
         
         if (Auth::check() && Auth::user()->id !== $userId) {
             $failedAttempts++;
             
             if ($failedAttempts >= 3) {
-                // Wylogowanie użytkownika
-                Auth::logout();
+                
+                Auth::logout(); // logout the user
                 session()->forget('failed_attempts');
 
                 return redirect()->back()->with('robber', 'Too many failed attempts. You have been logged out.');
             }
 
-            // Zapisanie liczby nieudanych prób logowania w sesji
-            session(['failed_attempts' => $failedAttempts]);
+            
+            session(['failed_attempts' => $failedAttempts]); // save the number of failed attempts
 
             return redirect()->back()->with('error', 'Wrong e-mail or phone number');
         }
 
-        // Resetowanie liczby nieudanych prób logowania
-        session()->forget('failed_attempts');
-
-        // Utworzenie nowej rezerwacji
-        $transaction = new Transaction();
+        
+        session()->forget('failed_attempts'); // reset faile_attempts number if someone finally booked a surgery
+        
+        $transaction = new Transaction(); // create new transaction
         $transaction->date = $request->input('date');
 
-        // Pobranie danych zabiegu na podstawie nazwy
-        $serviceId = $request->input('service');
+        
+        $serviceId = $request->input('service'); // get inputs by their names
         $surgery = Surgery::find($serviceId);
 
-        // Walidacja danych zabiegu
-        if (!$surgery) {
+        
+        if (!$surgery) { // check wether someone didn't mess with id of surgery while trying book a surgery
             return redirect()->back()->with('error', 'Invalid service selected.');
         }
 
-        // Sprawdzenie dostępności wybranej daty
-        $selectedDate = $transaction->date;
+        
+        $selectedDate = $transaction->date; // make sure the date is available
 
-        // Sprawdzenie czy wybrana data jest z przeszłości
-        if (\Carbon\Carbon::parse($selectedDate)->isPast() && !\Carbon\Carbon::parse($selectedDate)->isToday()) {
+        
+        if (\Carbon\Carbon::parse($selectedDate)->isPast() && !\Carbon\Carbon::parse($selectedDate)->isToday()) { // Check wether the date isn't from the past
             return redirect()->back()->with('error', 'Selected date cannot be in the past.');
         }
 
@@ -171,21 +170,23 @@ class TransactionController extends Controller
             return redirect()->back()->with('error', 'Selected date is already booked.');
         }
 
-        // Walidacja ceny zabiegu
-        $price = $surgery->price;
+        
+        $price = $surgery->price; // chech wether the price is correct
 
         if (!is_numeric($price) || $price <= 0) {
             return redirect()->back()->with('error', 'Invalid price for the selected service.');
         }
 
-        // Uzupełnienie danych rezerwacji
-        $transaction->price = $price;
-        $transaction->surgery_id = $surgery->id;
-        $transaction->doctor_id = null;
-        $transaction->user_id = $userId;
+        
+        $transaction->price = $price;            // fill the price of reservation
+        $transaction->surgery_id = $surgery->id; // fill the id addres of surgery for reservation
+        $transaction->doctor_id = null;          // leave doctors id field as null until he/she accepts it
+        $transaction->user_id = $userId;         // fill the id addres of user that books the surgery
 
         $transaction->save();
 
         return redirect()->route('welcome')->with('success', 'Booking created successfully.');
     }
+
+    
 }

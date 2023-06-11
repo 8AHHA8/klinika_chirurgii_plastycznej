@@ -16,32 +16,35 @@ class TransactionSeeder extends Seeder
      */
     public function run(): void
     {
-        $surgeryIds = range(1, 24);
-        $price = Surgery::all()->pluck('price')->toArray();
+        $surgeryIds = range(1, 24); // get an array of surgery IDs
 
-        $userIds = User::whereNotIn('id', function ($query) {
+        $price = Surgery::all()->pluck('price')->toArray(); // get an array of surgery prices
+
+        $userIds = User::whereNotIn('id', function ($query) { // get an array of user IDs who are not doctors
             $query->select('user_id')->from('doctors');
         })->pluck('id')->toArray();
 
         foreach ($surgeryIds as $surgeryId) {
-            $advancementLevel = ceil($surgeryId / 6); // obliczanie poziomu zaawansowania na podstawie id zabiegu
+            $advancementLevel = ceil($surgeryId / 6); // calculate advancement level based on surgery ID
 
-            $doctorIds = Doctors::where('advancement_level', '<=', $advancementLevel)
-            ->pluck('id')
-            ->toArray();
+            $doctorIds = Doctors::where('advancement_level', '<=', $advancementLevel) // get an array of doctor IDs with advancement level less than or equal to calculated advancement level
+                ->pluck('id')
+                ->toArray();
 
-            $doctorId = $doctorIds[array_rand($doctorIds)];
-            $date = Carbon::now()->subMonth()->addDays(rand(0, 90))->format('Y-m-d');
-            $specificPrice = $price[$surgeryId - 1];
+            $doctorId = $doctorIds[array_rand($doctorIds)]; // select a random doctor ID from the available doctor IDs
 
-            $numTransactions = DB::table('transactions') // sprawdzenie liczby zabiegów w danym dniu
+            $date = Carbon::now()->subMonth()->addDays(rand(0, 90))->format('Y-m-d'); // generate a random date within the last month
+
+            $specificPrice = $price[$surgeryId - 1]; // get the specific price for the surgery
+
+            $numTransactions = DB::table('transactions') // check the number of transactions on the date
                 ->where('date', $date)
                 ->count();
 
-            while ($numTransactions < 2) {  // maksymalnie dwie transakcje na dzień
-                $userId = $userIds[array_rand($userIds)];
-
-                DB::table('transactions')->insert([
+            while ($numTransactions < 2) {
+                $userId = $userIds[array_rand($userIds)]; // select a random user ID from the available user IDs
+           
+                DB::table('transactions')->insert([ // insert the transaction into the transactions table
                     'surgery_id' => $surgeryId,
                     'doctor_id' => $doctorId,
                     'user_id' => $userId,
@@ -51,7 +54,7 @@ class TransactionSeeder extends Seeder
 
                 $numTransactions++;
 
-                if ($numTransactions >= 2) { // przerwanie pętli, jeśli dodano już dwie transakcje
+                if ($numTransactions >= 2) { // break the loop if two transactions have been added
                     break;
                 }
             }

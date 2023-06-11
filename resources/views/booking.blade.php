@@ -11,17 +11,17 @@
 <body>
 <div class="image-background">
     <div class="container moveup">
-        <h1 class="typczcionka">BOOKING</h1>
+        <h1 class="font-semibold">BOOKING</h1>
         <form class="login-form" action="{{ route('booking') }}" method="POST">
             @csrf
-            <label for="e-mail" class="typczcionka">E-mail</label>
+            <label for="e-mail" class="font-semibold">E-mail</label>
             <input type="text" id="e-mail" name="e-mail" placeholder="Enter your e-mail" required>
 
-            <label for="phone_number" class="typczcionka">Phone number</label>
+            <label for="phone_number" class="font-semibold">Phone number</label>
             <input type="text" id="phone_number" name="phone_number" placeholder="Enter your phone number" required>
 
-            <label for="service" class="typczcionka">Select a Service</label>
-            <select id="service" name="service" class="typczcionka">
+            <label for="service" class="font-semibold">Select a Service</label>
+            <select id="service" name="service" class="font-semibold">
                 @foreach ($services as $service)
                     <option value="{{ $service->id }}">
                         {{ $service->name }} - {{ $service->price }}$
@@ -29,7 +29,7 @@
                 @endforeach
             </select>
 
-            <label for="date" class="typczcionka">Select a Date</label>
+            <label for="date" class="font-semibold">Select a Date</label>
             <input type="text" id="datepicker" name="date" required>
 
             <button type="submit">Book Service</button>
@@ -49,7 +49,7 @@
     .then(disabledDates => {
         flatpickr("#datepicker", {
             disable: disabledDates,
-            minDate: "today", // Blokuj daty z przeszłości
+            minDate: "today", //disabling dates from the past
         });
     });
 </script>
