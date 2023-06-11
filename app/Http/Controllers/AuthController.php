@@ -14,13 +14,13 @@ class AuthController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'e-mail' => 'required|string|e-mail|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ]);
 
         $user = User::create([
             'name' => $validatedData['name'],
-            'e-mail' => $validatedData['e-mail'],
+            'email' => $validatedData['email'],
             'password' => Hash::make($validatedData['password']),
         ]);
 
@@ -32,7 +32,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'e-mail' => 'required|string|e-mail',
+            'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
 
@@ -40,7 +40,7 @@ class AuthController extends Controller
             return redirect('/');
         } else {
             return back()->withErrors([
-                'e-mail' => 'Nieprawidłowy adres e-mail lub hasło.',
+                'email' => 'Nieprawidłowy adres email lub hasło.',
             ]);
         }
     }

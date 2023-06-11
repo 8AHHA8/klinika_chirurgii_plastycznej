@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Doctors;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 
 
@@ -66,16 +67,32 @@ class TransactionController extends Controller
         return redirect()->route('booking.index')->with('success', 'Booking created successfully.');
     }
 
-    public function edit(Transaction $transaction)
-    {
-       
-        $occupiedDates = Transaction::pluck('date')->toArray(); // retrieve all occupied dates from transactions
+    public function updateTransaction(Request $request, $id)
+{
+    // Logika aktualizacji rekordu transakcji na podstawie danych z formularza
+    $transaction = Transaction::find($id);
+    $transaction->date = $request->input('date');
+    $transaction->price = $request->input('price');
 
-        return View::make('edit-booking')->with([
-            'transaction' => $transaction,
-            'occupiedDates' => $occupiedDates
-        ]);
-    }
+    // Update the fields from the users table
+    $user = User::find($transaction->user_id);
+    $user->name = $request->input('name');
+    $user->surname = $request->input('surname');
+    $user->email = $request->input('email');
+    $user->phone_number = $request->input('phone_number');
+    $user->save();
+
+    // Update the surgery name field from the surgeries table
+    $surgery = Surgery::find($transaction->surgery_id);
+    $surgery->name = $request->input('surgery_name');
+    $surgery->save();
+
+    // Zapisz zmiany w rekordzie transakcji
+    $transaction->save();
+
+    // Przekieruj użytkownika na stronę z listą transakcji (lub inną stronę, którą uznasz za odpowiednią)
+    return Redirect::back();
+}
 
     /**
      * Update the specified resource in storage.
@@ -107,17 +124,17 @@ class TransactionController extends Controller
     {
         
         $request->validate([ // validation
-            'e-mail' => 'required|email',
+            'email' => 'required|email',
             'phone_number' => 'required',
             'service' => 'required',
             'date' => 'required|date',
         ]);
 
         
-        $email = $request->input('e-mail'); // get users id by his/hers mail and phone number
+        $email = $request->input('email'); // get users id by his/hers mail and phone number
         $phone_number = $request->input('phone_number');
         $userId = DB::table('users')
-            ->where('e-mail', $email)
+            ->where('email', $email)
             ->where('phone_number', $phone_number)
             ->value('id');
 
@@ -138,7 +155,7 @@ class TransactionController extends Controller
             
             session(['failed_attempts' => $failedAttempts]); // save the number of failed attempts
 
-            return redirect()->back()->with('error', 'Wrong e-mail or phone number');
+            return redirect()->back()->with('error', 'Wrong email or phone number');
         }
 
         

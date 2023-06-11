@@ -28,7 +28,7 @@ class RegisteredUserController extends Controller
             'surname' => $data['surname'],
             'phone_number' => $data['phone_number'],
             'pesel' => $data['pesel'],
-            'e-mail' => $data['e-mail'],
+            'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
     }
@@ -56,7 +56,7 @@ class RegisteredUserController extends Controller
             'surname' => ['required', 'string', 'max:255'],
             'phone_number' => ['required', 'integer'],
             'pesel' => ['required', 'string', 'size:11'],
-            'e-mail' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 

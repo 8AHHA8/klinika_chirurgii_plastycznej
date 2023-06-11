@@ -36,7 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/transactionsDelete/{id}', function($id){
         Transaction::destroy($id);
         // return view('profile.edit_role1');
-        return view('welcome');
+        return Redirect::back();
     });
 
     Route::post('/acceptTransaction/{userId}', function($userId) {
@@ -46,8 +46,11 @@ Route::middleware('auth')->group(function () {
             $transaction->doctor_id = true;
             $transaction->save();
         }
-        return view('welcome');
+        return Redirect::back();
     });
+
+    Route::put('/updateTransaction/{id}', [TransactionController::class, 'updateTransaction'])->name('updateTransaction');
+
 
     Route::get('/booking', [TransactionController::class, 'index'])->name('booking');
     Route::post('/booking', [TransactionController::class, 'booking'])->name('booking');

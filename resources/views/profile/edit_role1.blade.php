@@ -21,7 +21,7 @@
                                     <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Name</th>
                                     <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Surname</th>
                                     <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Phone Number</th>
-                                    <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">E-mail</th>
+                                    <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Email</th>
                                     <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Pesel</th>
                                     <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                                 </tr>
@@ -46,7 +46,7 @@
                                                     {{method_field('DELETE')}}
                                                     <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
                                                 </form>
-                                                <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Edit</button>
+                                                <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded" onclick="editTransaction(event, '{{ $transaction->id }}')">Edit</button>
                                                 <form action="/acceptTransaction/{{ Auth::user()->id }}" method="POST">
                                                     @csrf
                                                     <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Accept</button>
@@ -96,4 +96,37 @@
             </div>
         </div>
     </div>
+
+    <script>
+    function editTransaction(event, transactionId) {
+    var row = event.target.closest('tr');
+    var cells = row.getElementsByTagName('td');
+
+    var date = cells[2].innerText;
+    var price = cells[3].innerText;
+    var surgeryName = cells[4].innerText;
+    var name = cells[5].innerText;
+    var surname = cells[6].innerText;
+    var phoneNumber = cells[7].innerText;
+    var email = cells[8].innerText;
+    var pesel = cells[9].innerText;
+
+    var editForm = '<form action="/updateTransaction/'+ transactionId +'" method="POST"> \
+                        @csrf \
+                        <input type="hidden" name="_method" value="PUT"> \
+                        <input type="text" name="date" value="'+ date +'"> \
+                        <input type="text" name="price" value="'+ price +'"> \
+                        <input type="text" name="surgery_name" value="'+ surgeryName +'"> \
+                        <input type="text" name="name" value="'+ name +'"> \
+                        <input type="text" name="surname" value="'+ surname +'"> \
+                        <input type="text" name="phone_number" value="'+ phoneNumber +'"> \
+                        <input type="text" name="email" value="'+ email +'"> \
+                        <input type="text" name="pesel" value="'+ pesel +'"> \
+                        <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Save</button> \
+                    </form>';
+
+    row.innerHTML = '<td colspan="10">' + editForm + '</td>';
+    }
+    </script>
+
 </x-app-layout>
