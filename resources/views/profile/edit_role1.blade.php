@@ -47,7 +47,10 @@
                                                     <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
                                                 </form>
                                                 <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Edit</button>
-                                                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Accept</button>
+                                                <form action="/acceptTransaction/{{ Auth::user()->id }}" method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Accept</button>
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>

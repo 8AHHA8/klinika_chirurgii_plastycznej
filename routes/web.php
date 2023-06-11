@@ -7,6 +7,7 @@ use App\Http\Controllers\DoctorsController;
 use App\Http\Controllers\SurgeryController;
 use App\Http\Controllers\TransactionController;
 use App\Models\Transaction;
+use Illuminate\Support\Facades\Redirect;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/transactionsDelete/{id}', function($id){
         Transaction::destroy($id);
         // return view('profile.edit_role1');
+        return view('welcome');
+    });
+
+    Route::post('/acceptTransaction/{userId}', function($userId) {
+        $transaction = Transaction::where('user_id', $userId)->whereNull('doctor_id')->first();
+    
+        if ($transaction) {
+            $transaction->doctor_id = true;
+            $transaction->save();
+        }
         return view('welcome');
     });
 
