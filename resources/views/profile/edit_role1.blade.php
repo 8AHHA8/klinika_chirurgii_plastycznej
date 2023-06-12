@@ -1,8 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center">
-            {{ __('Welcome') }} {{ Auth::user()->name }}
-        </h2>
+    <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center">
+        <a href="{{ route('welcome') }}" class="text-black-500 hover:text-red-700">
+        {{ __('Welcome') }} {{ Auth::user()->name }}
+        </a>
+    </h2>
     </x-slot>
     
     <div class="py-12">
@@ -47,7 +49,7 @@
                                                     <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
                                                 </form>
                                                 <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded" onclick="editTransaction(event, '{{ $transaction->id }}')">Edit</button>
-                                                <form action="/acceptTransaction/{{ Auth::user()->id }}" method="POST">
+                                                <form action="/acceptTransaction/{{$transaction->id}}/{{ Auth::user()->id }}" method="POST">
                                                     @csrf
                                                     <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Accept</button>
                                                 </form>

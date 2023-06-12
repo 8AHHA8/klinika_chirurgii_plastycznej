@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Booking;
 use App\Models\Service;
+use App\Models\Doctors;
 
 class Transaction extends Model
 {
@@ -18,7 +19,7 @@ class Transaction extends Model
 
     public function doctor()
     {
-        return $this->belongsTo(Doctor::class);
+        return $this->belongsTo(Doctors::class);
     }
 
     public function user()
@@ -34,6 +35,7 @@ class Transaction extends Model
         'transactions',
         'surgeries',
         'date',
+        'doctor_id',
     ];
 
     

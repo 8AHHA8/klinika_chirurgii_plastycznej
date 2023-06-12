@@ -1,7 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 text-gray-800 leading-tight" style="margin-left: 35rem">
-            {{ __('Witaj') }} {{ Auth::user()->name }}
+    <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center">
+        <a href="{{ route('welcome') }}" class="text-black-500 hover:text-red-700">
+        {{ __('Welcome') }} {{ Auth::user()->name }}
+        </a>
+    </h2>
     </x-slot>
 
     <div class="py-12">

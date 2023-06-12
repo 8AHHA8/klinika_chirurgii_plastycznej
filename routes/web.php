@@ -8,7 +8,9 @@ use App\Http\Controllers\SurgeryController;
 use App\Http\Controllers\TransactionController;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Redirect;
-
+use Carbon\Carbon;
+use App\Models\User;
+use App\Models\Doctors;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,21 +35,35 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::delete('/transactionsDelete/{id}', function($id){
-        Transaction::destroy($id);
-        // return view('profile.edit_role1');
-        return Redirect::back();
+    Route::delete('/transactionsDelete/{id}', function($id) {
+        $transaction = Transaction::find($id);
+        if ($transaction) {
+            $transactionDate = Carbon::parse($transaction->date);
+            if ($transactionDate->isPast()) {
+                return redirect()->back();
+            }
+            $transaction->delete();
+        }
+        return redirect()->back();
     });
 
-    Route::post('/acceptTransaction/{userId}', function($userId) {
-        $transaction = Transaction::where('user_id', $userId)->whereNull('doctor_id')->first();
+    Route::post('/acceptTransaction/{userId}/{doctorId}', function($userId, $doctorId) {
+        $transaction = Transaction::find($userId);
     
         if ($transaction) {
-            $transaction->doctor_id = true;
-            $transaction->save();
+            if ($transaction->doctor_id === null) {
+                $transaction->doctor_id = $doctorId;
+                $transaction->save();
+            }elseif($transaction->doctor_id == $doctorId){
+                $transaction->doctor_id = null;
+                $transaction->save();
+            }
         }
-        return Redirect::back();
+    
+        return redirect()->back();
     });
+    
+
 
     Route::put('/updateTransaction/{id}', [TransactionController::class, 'updateTransaction'])->name('updateTransaction');
 

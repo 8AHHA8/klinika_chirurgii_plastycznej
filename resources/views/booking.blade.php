@@ -14,8 +14,8 @@
         <h1 class="font-semibold">BOOKING</h1>
         <form class="login-form" action="{{ route('booking') }}" method="POST">
             @csrf
-            <label for="e-mail" class="font-semibold">E-mail</label>
-            <input type="text" id="e-mail" name="e-mail" placeholder="Enter your e-mail" required>
+            <label for="email" class="font-semibold">Email</label>
+            <input type="text" id="email" name="email" placeholder="Enter your email" required>
 
             <label for="phone_number" class="font-semibold">Phone number</label>
             <input type="text" id="phone_number" name="phone_number" placeholder="Enter your phone number" required>
