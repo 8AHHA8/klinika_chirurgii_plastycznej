@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function () {
         if ($transaction) {
             $transactionDate = Carbon::parse($transaction->date);
             if ($transactionDate->isPast()) {
-                return redirect()->back();
+                return redirect()->back()->with('error', 'Nie można usuwać transakcji z przeszłości.');
             }
             $transaction->delete();
         }
@@ -49,21 +49,18 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/acceptTransaction/{userId}/{doctorId}', function($userId, $doctorId) {
         $transaction = Transaction::find($userId);
-    
-        if ($transaction) {
-            if ($transaction->doctor_id === null) {
-                $transaction->doctor_id = $doctorId;
+            if ($transaction->date >= now()->startOfDay()) {
+                if ($transaction->doctor_id === null) {
+                    $transaction->doctor_id = $doctorId;
+                } elseif ($transaction->doctor_id == $doctorId) {
+                    $transaction->doctor_id = null;
+                }
                 $transaction->save();
-            }elseif($transaction->doctor_id == $doctorId){
-                $transaction->doctor_id = null;
-                $transaction->save();
-            }
+            } else {
+                return redirect()->back()->with('error', 'Nie można zmieniać transakcji z przeszłości.');
         }
-    
         return redirect()->back();
     });
-    
-
 
     Route::put('/updateTransaction/{id}', [TransactionController::class, 'updateTransaction'])->name('updateTransaction');
 
