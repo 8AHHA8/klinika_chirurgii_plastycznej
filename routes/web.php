@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Doctors;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,38 +36,46 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::delete('/transactionsDelete/{id}', function($id) {
+    Route::delete('/transactions/{id}', function($id) {
         $transaction = Transaction::find($id);
         if ($transaction) {
             $transactionDate = Carbon::parse($transaction->date);
             if ($transactionDate->isPast()) {
-                return redirect()->back()->with('error', 'Nie można usuwać transakcji z przeszłości.');
+                return redirect()->back()->with('error', 'you can not delete transaction from the past.');
             }
             $transaction->delete();
         }
         return redirect()->back();
-    });
+    })->name('transactions.delete');
 
-    Route::post('/acceptTransaction/{userId}/{doctorId}', function($userId, $doctorId) {
+    Route::post('/transactions/{userId}/{doctorId}', function($userId, $doctorId) {
         $transaction = Transaction::find($userId);
-            if ($transaction->date >= now()->startOfDay()) {
-                if ($transaction->doctor_id === null) {
-                    $transaction->doctor_id = $doctorId;
-                } elseif ($transaction->doctor_id == $doctorId) {
-                    $transaction->doctor_id = null;
+        if ($transaction->date >= now()->startOfDay()) { // check if date is from the past
+            if ($transaction->doctor_id === null) {
+                if ($doctorId != $transaction->user_id) { // check if doctor is trying to perform a surgery on himself
+                    if ($doctorId == Auth::user()->id) { // check if someone is trying someone elses id to a transaction
+                        $transaction->doctor_id = $doctorId;
+                    } else {
+                        return redirect()->back()->with('error', 'you are not supposed to do that.');
+                    }
+                } else {
+                    return redirect()->back()->with('error', 'you can not operate on yourself.');
                 }
-                $transaction->save();
-            } else {
-                return redirect()->back()->with('error', 'Nie można zmieniać transakcji z przeszłości.');
+            } elseif ($transaction->doctor_id == $doctorId) { // unsign doctor
+                $transaction->doctor_id = null;
+            }
+            $transaction->save();
+        } else {
+            return redirect()->back()->with('error', 'you can not accept transaction from the past.');
         }
         return redirect()->back();
     });
 
-    Route::put('/updateTransaction/{id}', [TransactionController::class, 'updateTransaction'])->name('updateTransaction');
+    Route::put('/transactions/{id}', [TransactionController::class, 'updateTransaction'])->name('transactions.update');
 
 
-    Route::get('/booking', [TransactionController::class, 'index'])->name('booking');
-    Route::post('/booking', [TransactionController::class, 'booking'])->name('booking');
+    Route::get('/bookings', [TransactionController::class, 'index'])->name('bookings');
+    Route::post('/bookings', [TransactionController::class, 'booking'])->name('bookings');
 });
 
 Route::get('/doctors', [DoctorsController::class, 'index'])->name('doctors');

@@ -87,3 +87,11 @@
         background-color: red !important;
         color: white !important;
     }
+
+    .changecolor {
+        background-color: red;
+        color: white;
+        border-radius: 5px;
+        text-align: center;
+        margin-top: 10px;
+    }

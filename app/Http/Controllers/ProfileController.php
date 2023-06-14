@@ -29,12 +29,12 @@ class ProfileController extends Controller
                 ->select('transactions.id', 'transactions.doctor_id', 'transactions.date', 'transactions.price', 'surgeries.name AS surgery_name', 'users.name', 'users.surname', 'users.phone_number', 'users.email As email', 'users.pesel')
                 ->orderBy('transactions.id', 'asc')
                 ->get();
-        
+
             $transactionCollection = collect($transactions);
             $sortedTransactions = $transactionCollection->sortByDesc('date');
-        
+
             $perPage = 10;
-        
+
             $paginatedTransactions = new LengthAwarePaginator(
                 $sortedTransactions->forPage($request->page, $perPage),
                 $sortedTransactions->count(),
@@ -42,16 +42,16 @@ class ProfileController extends Controller
                 $request->page,
                 ['path' => $request->url()]
             );
-        
+
             $surgeries = Surgery::all();
 
-            return view('profile.edit_role1', [
+            return view('profile.edit-role1', [
                 'user' => $user,
                 'transactions' => $paginatedTransactions,
                 'surgeries' => $surgeries,
             ]);
         }elseif ($role === 2) {
-            return view('profile.edit_role2', [
+            return view('profile.edit-role2', [
                 'user' => $user,
             ]);
         } else {
@@ -97,7 +97,7 @@ class ProfileController extends Controller
         DB::beginTransaction();
 
         try {
-            
+
             DB::table('transactions')->where('user_id', $user->id)->delete();
 
             $user->delete(); //Delete user
@@ -119,19 +119,6 @@ class ProfileController extends Controller
         } else {
             return redirect()->to('/')->withErrors('Invalid user role.'); // Wrong role
         }
-    }
-
-
-    public function editTransaction($transactionId)
-    {
-
-        return redirect()->back();
-    }
-
-    public function acceptTransaction($transactionId)
-    {
-
-        return redirect()->back();
     }
 
 }

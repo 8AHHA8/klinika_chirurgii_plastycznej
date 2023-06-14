@@ -12,13 +12,13 @@
 <div class="image-background">
     <div class="container moveup">
         <h1 class="font-semibold">BOOKING</h1>
-        <form class="login-form" action="{{ route('booking') }}" method="POST">
+        <form class="login-form" action="{{ route('bookings') }}" method="POST">
             @csrf
             <label for="email" class="font-semibold">Email</label>
-            <input type="text" id="email" name="email" placeholder="Enter your email" required>
+            <input type="text" id="email" name="email" placeholder="Enter your email" value="{{ Auth::user()->email }}" required>
 
             <label for="phone_number" class="font-semibold">Phone number</label>
-            <input type="text" id="phone_number" name="phone_number" placeholder="Enter your phone number" required>
+            <input type="text" id="phone_number" name="phone_number" placeholder="Enter your phone number" value="{{ Auth::user()->phone_number }}" required>
 
             <label for="service" class="font-semibold">Select a Service</label>
             <select id="service" name="service" class="font-semibold">
@@ -35,7 +35,7 @@
             <button type="submit">Book Service</button>
 
             @if (session('error'))
-                <div class="error-message">{{ session('error') }}</div>
+                <div class="error-message changecolor">{{ session('error') }}</div>
             @endif
         </form>
 

@@ -11,10 +11,10 @@
     <script>
         window.addEventListener('DOMContentLoaded', (event) => {
             const images = document.querySelectorAll('.picsize');
-            
+
             images.forEach((image) => {
                 image.addEventListener('mouseover', () => {
-                    const audio = new Audio('click.mp3'); 
+                    const audio = new Audio('click.mp3');
                     audio.play();
                 });
             });
@@ -24,9 +24,9 @@
 <script>
     window.addEventListener('DOMContentLoaded', (event) => {
         const loginOption = document.querySelector('.login-option a');
-        
-        const isUserLoggedIn = false; 
-        
+
+        const isUserLoggedIn = false;
+
         if (isUserLoggedIn) {
             loginOption.href = 'http://127.0.0.1:8000/logout';
             loginOption.textContent = 'Log out';
@@ -36,7 +36,7 @@
         }
     });
 </script>
-    
+
 <style>
     .parallax {
     background-image: url("{{asset('photos/background_hospital.jpg')}}");
@@ -53,7 +53,7 @@
 
         <h1 class="font-semibold doublefont">PLASTIC SURGERY CLINIC FACILITY</h1>
         <p class="font-semibold">YOU CAN CHANGE YOURSELF WITH US</p>
-        
+
         <!-- Settings Dropdown -->
         <div class="hidden sm:flex sm:items-center sm:ml-6 d-flex justify-content-end moveup">
                     @if (Auth::check())
@@ -119,37 +119,37 @@
                     <div class="error-message">{{ session('robber') }}</div>
                 @endif
     </header>
-    
+
     <nav>
         <ul>
             <li><a href="/doctors" class="font-semibold">OUR TEAM</a></li>
             <li><a href="/services" class="font-semibold" >SERVICES</a></li>
-            <li><a href="/booking"class="font-semibold">BOOKING</a></li>
+            <li><a href="/bookings"class="font-semibold">BOOKING</a></li>
         </ul>
     </nav>
 
     <section>
-    <h2 class="font-semibold opinion">ABOUT US</h2>
+    <h2 class="font-semibold opinion mv1 mv2">ABOUT US</h2>
     <div class="flex-container">
-      <img src="{{asset('photos/kadra.jpg')}}" alt="Lights" class="size-team fonttype">
+      <img src="{{asset('photos/kadra.jpg')}}" alt="Lights" class="size-team fonttype mv1">
       <div class="text-container">
-    <p class="text-justify font-semibold fontblack">We are a team of experienced plastic surgeons ready to provide you with a comprehensive range of plastic surgery services. 
-        Our plastic surgery clinic is equipped with state-of-the-art medical equipment, and our specialists have extensive experience and deep knowledge in their field. 
-        We understand the importance of your trust and sense of security during plastic surgery procedures. Therefore, we prioritize an individual approach to each patient, 
-        carefully listening to your needs and expectations. Our priority is to ensure the highest quality of medical care and achieve the best possible results. 
+    <p class="text-justify font-semibold fontblack mv2">We are a team of experienced plastic surgeons ready to provide you with a comprehensive range of plastic surgery services.
+        Our plastic surgery clinic is equipped with state-of-the-art medical equipment, and our specialists have extensive experience and deep knowledge in their field.
+        We understand the importance of your trust and sense of security during plastic surgery procedures. Therefore, we prioritize an individual approach to each patient,
+        carefully listening to your needs and expectations. Our priority is to ensure the highest quality of medical care and achieve the best possible results.
         Our specialists not only have a solid medical education but also continuously enhance their qualifications by participating in trainings and conferences
-         on the latest advancements in plastic surgery. This enables us to offer you the latest techniques and methods tailored to your individual needs. 
-         We constantly strive to improve our skills and raise the standards of our clinic. We create a place where patients feel comfortable and confident, 
-         knowing they are in the hands of experienced professionals. We take care to make the entire process, from the first consultation to recovery, 
-         as comfortable and safe as possible for you. If you are looking for a trusted plastic surgery clinic where your needs are a priority, 
+         on the latest advancements in plastic surgery. This enables us to offer you the latest techniques and methods tailored to your individual needs.
+         We constantly strive to improve our skills and raise the standards of our clinic. We create a place where patients feel comfortable and confident,
+         knowing they are in the hands of experienced professionals. We take care to make the entire process, from the first consultation to recovery,
+         as comfortable and safe as possible for you. If you are looking for a trusted plastic surgery clinic where your needs are a priority,
          we invite you to visit us. Give us the opportunity to help you achieve your goals and feel more confident in your own skin.</p>
   </div>
 </section>
 
 <section >
 
-<h2 class=" font-semibold opinion">OPINIONS</h2>
-<div class="row">
+<h2 class="font-semibold mv1 mv2 opinion">OPINIONS</h2>
+<div class="row ">
   <div class="col-md-4">
     <div class="thumbnail centered">
         <img src="{{asset('photos/1.jpg')}}" alt="Lights" class="picsize">
@@ -243,10 +243,10 @@
     </div>
   </div>
 </div>
-  
 
 
-    
+
+
 </section>
 
 <footer>
