@@ -49,7 +49,6 @@ class TransactionController extends Controller
     }
 
 
-
     /**
      * Store a newly created resource in storage.
      */
@@ -68,31 +67,42 @@ class TransactionController extends Controller
     }
 
     public function updateTransaction(Request $request, $id)
-    {
-        $transaction = Transaction::find($id);
-        $transaction->date = $request->input('date');
-        $transaction->price = $request->input('price');
+{
+    $validatedData = $request->validate([
+        'date' => 'required|date',
+        'price' => 'required|numeric',
+        'name' => 'required|string',
+        'surname' => 'required|string',
+        'email' => 'required|email',
+        'phone_number' => 'required|string',
+        'surgery_name' => 'required|string',
+    ]);
 
-        $user = User::find($transaction->user_id);
-        $user->name = $request->input('name');
-        $user->surname = $request->input('surname');
-        $user->email = $request->input('email');
-        $user->phone_number = $request->input('phone_number');
-        $user->save();
+    $transaction = Transaction::find($id);
+    $transaction->date = $validatedData['date'];
+    $transaction->price = $validatedData['price'];
 
-        $surgery = Surgery::find($transaction->surgery_id);
-        $surgery->name = $request->input('surgery_name');
-        $surgery->save();
+    $user = User::find($transaction->user_id);
+    $user->name = $validatedData['name'];
+    $user->surname = $validatedData['surname'];
+    $user->email = $validatedData['email'];
+    $user->phone_number = $validatedData['phone_number'];
+    $user->save();
 
-        $transaction->save();
+    $surgery = Surgery::find($transaction->surgery_id);
+    $surgery->name = $validatedData['surgery_name'];
+    $surgery->save();
 
-        return Redirect::back();
-    }
+    $transaction->save();
+
+    return Redirect::back();
+}
+
 
     public function booking(Request $request)
     {
 
-        $request->validate([ // validation
+        $request->validate([             // validation
             'email' => 'required|email',
             'phone_number' => 'required',
             'service' => 'required',
@@ -107,25 +117,6 @@ class TransactionController extends Controller
             ->where('phone_number', $phone_number)
             ->value('id');
 
-
-        $failedAttempts = session('failed_attempts', 0); // check how many times the user has failed to book a date
-
-        if (Auth::check() && Auth::user()->id !== $userId) {
-            $failedAttempts++;
-
-            if ($failedAttempts >= 3) {
-
-                Auth::logout(); // logout the user
-                session()->forget('failed_attempts');
-
-                return redirect()->back()->with('robber', 'Too many failed attempts. You have been logged out.');
-            }
-
-
-            session(['failed_attempts' => $failedAttempts]); // save the number of failed attempts
-
-            return redirect()->back()->with('error', 'Wrong email or phone number');
-        }
 
 
         session()->forget('failed_attempts'); // reset faile_attempts number if someone finally booked a surgery
