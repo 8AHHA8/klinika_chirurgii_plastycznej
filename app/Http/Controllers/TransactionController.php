@@ -67,36 +67,36 @@ class TransactionController extends Controller
     }
 
     public function updateTransaction(Request $request, $id)
-{
-    $validatedData = $request->validate([
-        'date' => 'required|date',
-        'price' => 'required|numeric',
-        'name' => 'required|string',
-        'surname' => 'required|string',
-        'email' => 'required|email',
-        'phone_number' => 'required|string',
-        'surgery_name' => 'required|string',
-    ]);
+    {
+        $validatedData = $request->validate([
+            'date' => 'required|date',
+            'price' => 'required|numeric',
+            'name' => 'required|string',
+            'surname' => 'required|string',
+            'email' => 'required|email',
+            'phone_number' => 'required|string',
+            'surgery_name' => 'required|string',
+        ]);
 
-    $transaction = Transaction::find($id);
-    $transaction->date = $validatedData['date'];
-    $transaction->price = $validatedData['price'];
+        $transaction = Transaction::find($id);
+        $transaction->date = $validatedData['date'];
+        $transaction->price = $validatedData['price'];
 
-    $user = User::find($transaction->user_id);
-    $user->name = $validatedData['name'];
-    $user->surname = $validatedData['surname'];
-    $user->email = $validatedData['email'];
-    $user->phone_number = $validatedData['phone_number'];
-    $user->save();
+        $user = User::find($transaction->user_id);
+        $user->name = $validatedData['name'];
+        $user->surname = $validatedData['surname'];
+        $user->email = $validatedData['email'];
+        $user->phone_number = $validatedData['phone_number'];
+        $user->save();
 
-    $surgery = Surgery::find($transaction->surgery_id);
-    $surgery->name = $validatedData['surgery_name'];
-    $surgery->save();
+        $surgery = Surgery::find($transaction->surgery_id);
+        $surgery->name = $validatedData['surgery_name'];
+        $surgery->save();
 
-    $transaction->save();
+        $transaction->save();
 
-    return Redirect::back();
-}
+        return Redirect::back();
+    }
 
 
     public function booking(Request $request)

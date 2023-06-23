@@ -10,8 +10,6 @@ call php artisan migrate:fresh --seed
 
 call php artisan key:generate
 
-call php artisan storage:link
-
-call npm run dev
+start http://127.0.0.1:8000/
 
 call php artisan serve
